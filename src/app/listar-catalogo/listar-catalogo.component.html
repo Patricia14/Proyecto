@@ -1,0 +1,38 @@
+<h2>Listado de Catalogo</h2>
+<table mat-table [dataSource]="catalogos" class="mat-elevation-z8" style="width: 100%;">
+    <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef>Nombre</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.nombre_catalogo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="precio">
+        <th mat-header-cell *matHeaderCellDef>Precio</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.precio_catalogo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="imagen">
+        <th mat-header-cell *matHeaderCellDef>imagen</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.imagen_catalogo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef>descripcion</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.descripcion_catalogo}} </td>
+    </ng-container>
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let catalogo">
+            <a mat-icon-button [routerLink]="['/catalogos/editar', catalogo.id_catalogo ]">
+                <mat-icon color="primary">edit</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let catalogo">
+            <button (click)="eliminarCatalogo(catalogo)" mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['nombre', 'precio', 'imagen', 'descripcion','editar', 'eliminar']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['nombre', 'precio', 'imagen', 'descripcion','editar', 'eliminar'];"></tr>
+</table>
