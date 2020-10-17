@@ -7,11 +7,13 @@ import { EditarMascotaComponent } from './editar-mascota/editar-mascota.componen
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { AgregarCatalogoComponent } from './agregar-catalogo/agregar-catalogo.component';
 import { ListarCatalogoComponent } from './listar-catalogo/listar-catalogo.component';
+import { EditarCatalogoComponent } from './editar-catalogo/editar-catalogo.component';
 
 const routes: Routes = [
   { path: "acerca-de", component: AcercaDeComponent },
   { path: "mascotas", component: ListarMascotasComponent },
   { path: "listar-catalogo", component: ListarCatalogoComponent },
+  { path: "editar-catalogo/:id_catalogo", component: EditarCatalogoComponent },
   { path: "agregar-catalogo", component: AgregarCatalogoComponent },
   { path: "mascotas/agregar", component: AgregarMascotaComponent },
   { path: "mascotas/editar/:id_mascota", component: EditarMascotaComponent },

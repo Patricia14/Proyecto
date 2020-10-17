@@ -25,6 +25,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { AcercaDeComponent } from './acerca-de/acerca-de.component';
 import { ListarCatalogoComponent } from './listar-catalogo/listar-catalogo.component';
 import { AgregarCatalogoComponent } from './agregar-catalogo/agregar-catalogo.component';
+import { EditarCatalogoComponent } from './editar-catalogo/editar-catalogo.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { AgregarCatalogoComponent } from './agregar-catalogo/agregar-catalogo.co
     EditarMascotaComponent,
     AcercaDeComponent,
     ListarCatalogoComponent,
-    AgregarCatalogoComponent
+    AgregarCatalogoComponent,
+    EditarCatalogoComponent
   ],
   entryComponents: [
     DialogoConfirmacionComponent,
