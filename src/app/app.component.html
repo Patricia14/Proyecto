@@ -6,11 +6,34 @@
       </button>
       <span>
         Veterinaria pets
-       
       </span>
-      <span>
-        <a mat-stroked-button href="#">Usuario X ha iniciado sesión</a>
-      </span>
+      <mat-toolbar-row class="flexExpand">
+        <nav class="navbar-expand-lg navbar-dark bg-warn rounded ">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample"
+            aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarsExample">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="loginbtn" routerLink="home" routerLinkActive="active">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="loginbtn" routerLink="login" routerLinkActive="active">Login</a>
+              </li>
+              <li class="nav-item">
+                <button type="button" *ngIf="logoutbtn" class="btn btn-block" (click)="logout()">logout</button>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="loginbtn" routerLink="registracion" routerLinkActive="active">Registrase</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </mat-toolbar-row>
     </mat-toolbar-row>
   </mat-toolbar>
   <mat-sidenav-container class="contenido">

@@ -1,9 +1,9 @@
 
 import { Component, OnInit } from '@angular/core';
-import { MascotasService } from "../mascotas.service"
-import { Mascota } from "../mascota"
+import { MascotasService } from "../../services/mascotas.service"
+import { Mascota } from "../../models/mascota"
 import { MatDialog } from '@angular/material/dialog';
-import { DialogoConfirmacionComponent } from "../dialogo-confirmacion/dialogo-confirmacion.component"
+import { DialogoConfirmacionComponent } from "../../Utilidades/dialogo-confimacion/dialogo-confirmacion.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-listar-mascotas',

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Catalogo } from '../catalogo';
-import { CatalogoService } from "../catalogo.service"
+import { Catalogo } from '../models/catalogo';
+import { CatalogoService } from "../services/catalogo.service"
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 

@@ -1,4 +1,3 @@
-
 import { Mascota } from './mascota';
 
 describe('Mascota', () => {

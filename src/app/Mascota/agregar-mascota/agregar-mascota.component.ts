@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Mascota } from '../mascota';
-import { MascotasService } from "../mascotas.service"
+import { Mascota } from '../../models/mascota';
+import { MascotasService } from "../../services/mascotas.service"
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 

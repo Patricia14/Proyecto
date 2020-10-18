@@ -1,8 +1,8 @@
 
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Mascota } from "./mascota"
-import { environment } from "../environments/environment"
+import { Mascota } from "../models/mascota"
+import { environment } from "../../environments/environment"
 @Injectable({
   providedIn: 'root'
 })

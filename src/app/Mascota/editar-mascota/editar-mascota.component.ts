@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { MascotasService } from "../mascotas.service"
-import { Mascota } from '../mascota';
+import { MascotasService } from "../../services/mascotas.service"
+import { Mascota } from '../../models/mascota';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-editar-mascota',
