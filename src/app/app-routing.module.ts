@@ -29,8 +29,8 @@ const routes: Routes = [
   { path: 'registracion', component: RegistroComponent },
   { path: 'usuario', component: AgregarUsuarioComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard] },
-  { path: "", redirectTo: "../home.html", pathMatch: "full" },// Cuando es la raíz
-  { path: "**", redirectTo: "../home.html" }
+  { path: "", redirectTo: "home", pathMatch: "full" },// Cuando es la raíz
+  { path: "**", redirectTo: "home" }
 ];
 
 @NgModule({
