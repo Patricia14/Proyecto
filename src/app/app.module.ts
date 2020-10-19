@@ -32,6 +32,12 @@ import { UsuarioComponent } from './components/usuario/usuario.component';
 import { AgregarUsuarioComponent } from './usuario/agregar-usuario/agregar-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
+import { ActualizarExpedienteComponent } from './expe/actualizar-expediente/actualizar-expediente.component';
+import { AgregarExpedienteComponent } from './expe/agregar-expediente/agregar-expediente.component';
+import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-expediente.component';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +57,9 @@ import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.
     AgregarUsuarioComponent,
     EditarUsuarioComponent,
     ListarUsuarioComponent,
+    ActualizarExpedienteComponent,
+    AgregarExpedienteComponent,
+    MostrarExpedienteComponent,
   ],
   entryComponents: [
     DialogoConfirmacionComponent,

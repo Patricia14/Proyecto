@@ -14,6 +14,9 @@ import { RegistroComponent } from './registro/registro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthguardGuard } from './authguard.guard';
 import { AgregarUsuarioComponent } from './usuario/agregar-usuario/agregar-usuario.component';
+import { ActualizarExpedienteComponent } from './expe/actualizar-expediente/actualizar-expediente.component';
+import { AgregarExpedienteComponent } from './expe/agregar-expediente/agregar-expediente.component';
+import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-expediente.component';
 
 
 const routes: Routes = [
@@ -28,7 +31,11 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'registracion', component: RegistroComponent },
   { path: 'usuario', component: AgregarUsuarioComponent },
+  { path: 'expediente/actualizar', component:ActualizarExpedienteComponent},
+  { path: 'expediente/agregar', component:AgregarExpedienteComponent },
+  { path: 'expediente/mostrar', component:MostrarExpedienteComponent },
   { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard] },
+  
   { path: "", redirectTo: "home", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "home" }
 ];
