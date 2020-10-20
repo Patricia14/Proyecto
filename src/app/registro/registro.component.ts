@@ -11,40 +11,19 @@ import { RegistroService } from '../services/registro.service';
 })
 export class RegistroComponent implements OnInit {
   angForm: FormGroup;
-  loginbtn: boolean;
-  logoutbtn: boolean;
   tipo: string;
   constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router) {
 
     this.angForm = this.fb.group({
-      email: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
+      email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
       password: ['', Validators.required],
-      name: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')]) ],
-      apellido: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')]) ]
+      name: ['', Validators.required],
+      apellido: ['', Validators.required],
+      mobile: ['', Validators.required]
     });
-
-    dataService.getLoggedInName.subscribe(name => this.changeName(name));
-    if (this.dataService.isLoggedIn()) {
-      console.log("loggedin");
-      this.loginbtn = false;
-      this.logoutbtn = true
-    }
-    else {
-      this.loginbtn = true;
-      this.logoutbtn = false
-    }
   }
 
   ngOnInit() {
-  }
-
-  private changeName(name: boolean): void {
-    this.logoutbtn = name;
-    this.loginbtn = !name;
-  }
-  logout() {
-    this.dataService.deleteToken();
-    window.location.href = window.location.href;
   }
 
   postdata(angForm1) {
