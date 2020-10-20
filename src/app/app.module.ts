@@ -28,7 +28,6 @@ import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { UsuarioComponent } from './components/usuario/usuario.component';
 import { AgregarUsuarioComponent } from './usuario/agregar-usuario/agregar-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
@@ -53,7 +52,6 @@ import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-ex
     LoginComponent,
     RegistroComponent,
     DashboardComponent,
-    UsuarioComponent,
     AgregarUsuarioComponent,
     EditarUsuarioComponent,
     ListarUsuarioComponent,

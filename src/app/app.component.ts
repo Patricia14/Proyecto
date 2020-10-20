@@ -22,7 +22,6 @@ export class AppComponent {
       this.loginbtn = true;
       this.logoutbtn = false
     }
-
   }
 
   private changeName(name: boolean): void {
