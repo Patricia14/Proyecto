@@ -1,8 +1,7 @@
-
 <?php
 $contraseña = "";
 $usuario = "root";
-$nombre_base_de_datos = "bd1";
+$nombre_base_de_datos = "proyecto";
 try {
     return new PDO('mysql:host=localhost;dbname=' . $nombre_base_de_datos, $usuario, $contraseña);
 } catch (Exception $e) {
