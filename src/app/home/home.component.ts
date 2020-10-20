@@ -1,15 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { RegistroService } from '../services/registro.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  loginbtn: boolean;
+  logoutbtn: boolean;
 
-  constructor() { }
-
-  ngOnInit() {
+  constructor(private dataService: RegistroService) {
+    dataService.getLoggedInName.subscribe(name => this.changeName(name));
+    if (this.dataService.isLoggedIn()) {
+      console.log("loggedin");
+      this.loginbtn = false;
+      this.logoutbtn = true
+    }
+    else {
+      this.loginbtn = true;
+      this.logoutbtn = false
+    }
   }
 
+  private changeName(name: boolean): void {
+    this.logoutbtn = name;
+    this.loginbtn = !name;
+  }
+  logout() {
+    this.dataService.deleteToken();
+    window.location.href = window.location.href;
+  }
 }
