@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RegistroService } from '../services/registro.service';
+import { SocialAuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-home',
@@ -9,8 +11,11 @@ import { RegistroService } from '../services/registro.service';
 export class HomeComponent {
   loginbtn: boolean;
   logoutbtn: boolean;
+  user: SocialUser;
+  loggedIn: boolean;
 
-  constructor(private dataService: RegistroService) {
+  constructor(private dataService: RegistroService, private authService: SocialAuthService) {
+
     dataService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.dataService.isLoggedIn()) {
       console.log("loggedin");
@@ -21,6 +26,16 @@ export class HomeComponent {
       this.loginbtn = true;
       this.logoutbtn = false
     }
+  }
+
+  ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log("loggedin");
+      this.loginbtn = false;
+      this.logoutbtn = true
+    });
   }
 
   private changeName(name: boolean): void {

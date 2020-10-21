@@ -3,6 +3,8 @@ import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angula
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { RegistroService } from '../services/registro.service';
+import { SocialAuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-registro',
@@ -14,7 +16,9 @@ export class RegistroComponent implements OnInit {
   loginbtn: boolean;
   logoutbtn: boolean;
   tipo: string;
-  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router) {
+  user: SocialUser;
+  loggedIn: boolean;
+  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router, private authService: SocialAuthService) {
 
     this.angForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
@@ -36,6 +40,13 @@ export class RegistroComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log("loggedin");
+      this.loginbtn = false;
+      this.logoutbtn = true
+    });
   }
 
   private changeName(name: boolean): void {

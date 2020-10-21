@@ -36,7 +36,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'registracion', component: RegistroComponent },
-  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard] },
+  { path: 'dashboard', component: DashboardComponent, /*canActivate: [AuthguardGuard] */},
   { path: "", redirectTo: "home", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "home" }
 ];

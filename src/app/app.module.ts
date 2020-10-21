@@ -34,8 +34,8 @@ import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.
 import { ActualizarExpedienteComponent } from './expe/actualizar-expediente/actualizar-expediente.component';
 import { AgregarExpedienteComponent } from './expe/agregar-expediente/agregar-expediente.component';
 import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-expediente.component';
-
-
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from 'angularx-social-login';
 
 @NgModule({
   declarations: [
@@ -79,9 +79,25 @@ import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-ex
     MatTableModule,
     MatDialogModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '68716211681-f9al3te9hem55o2kjflsulje58c23pu5.apps.googleusercontent.com'
+            ),
+          },
+        ],
+      } as SocialAuthServiceConfig,
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

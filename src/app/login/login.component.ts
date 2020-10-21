@@ -3,6 +3,9 @@ import { FormGroup, FormBuilder, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { RegistroService } from '../services/registro.service';
+import { SocialAuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
+
 
 @Component({
   selector: 'app-login',
@@ -13,7 +16,11 @@ export class LoginComponent implements OnInit {
   loginbtn: boolean;
   logoutbtn: boolean;
   angForm: FormGroup;
-  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router) {
+
+  user: SocialUser;
+  loggedIn: boolean;
+
+  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router, private authService: SocialAuthService) {
     this.angForm = this.fb.group({
       email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
       password: ['', Validators.required]
@@ -32,7 +39,21 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      console.log("loggedin");
+      this.loginbtn = false;
+      this.logoutbtn = true
+    });
   }
+
+  log_google(){
+    try{this.dataService.signInWithGoogle();}
+    catch(error){console.log(error)}
+    this.router.navigate(['dashboard']);
+  }
+
 
   private changeName(name: boolean): void {
     this.logoutbtn = name;

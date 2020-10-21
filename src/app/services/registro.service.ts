@@ -2,6 +2,9 @@ import { Injectable, Output, EventEmitter } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Registro } from '../models/registro';
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +13,7 @@ export class RegistroService {
   redirectUrl: string;
   baseUrl: string = "http://localhost/server/login";
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-  constructor(private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authService: SocialAuthService) { }
 
   public userLogin(username, password) {
     //alert(username)
@@ -21,6 +24,12 @@ export class RegistroService {
         return Registro;
       }));
   }
+
+  signInWithGoogle(): void {
+    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+  }
+
+
   public userregistration(name, apellido, email, pwd, tipo) {
     return this.httpClient.post<any>(this.baseUrl + '/registro.php', { name, apellido, email, pwd, tipo })
       .pipe(map(Registro => {
