@@ -20,6 +20,9 @@
                     <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
                             *ngIf="loginbtn" [routerLink]="['/registracion']" routerLinkActive="active">Registrarse</a>
                     </li>
+                    <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger"
+                            *ngIf="logoutbtn" (click)="logout()">Logout</a>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -45,7 +48,8 @@
                     <button type="submit" class="btn btn-primary btn-lg btn-block">Login</button>
                 </form>
                 <div class="form-group mt-3">
-                    <button (click)="log_google()" class="btn-floating btn-lg btn-gplus"><i class="fab fa-google-plus-g"></i> Iniciar sesion con google</button>
+                    <button (click)="log_google()" class="btn-floating btn-lg btn-gplus"><i
+                            class="fab fa-google-plus-g"></i> Iniciar sesion con google</button>
                 </div>
                 <div class="form-group mt-3">
                     <p>Do you have an account?<a [routerLink]="['/registracion']"> Register</a></p>

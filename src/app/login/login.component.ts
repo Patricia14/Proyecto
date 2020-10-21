@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
     this.logoutbtn = name;
     this.loginbtn = !name;
   }
+  
   logout() {
     this.dataService.deleteToken();
     window.location.href = window.location.href;

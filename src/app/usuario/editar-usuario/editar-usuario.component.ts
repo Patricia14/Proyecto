@@ -30,6 +30,7 @@ export class EditarUsuarioComponent implements OnInit {
 
     onSubmit() {
       this.usuario.tipo_usuario = this.unidades.indexOf(this.usuario.nombre_tipo_usuario);
+      console.log(this.usuario)
       this.usuariosService.updateUsuario(this.usuario).subscribe(() => {
         this.snackBar.open('Usuario actualizado', undefined, {
           duration: 1500,

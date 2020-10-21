@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { CatalogoService } from "../services/catalogo.service"
-import { Catalogo } from '../models/catalogo';
+import { CatalogoService } from "../../services/catalogo.service"
+import { Catalogo } from '../../models/catalogo';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

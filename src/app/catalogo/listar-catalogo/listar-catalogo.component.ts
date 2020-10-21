@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { CatalogoService } from "../services/catalogo.service";
-import {Catalogo} from "../models/catalogo";
+import { CatalogoService } from "../../services/catalogo.service";
+import {Catalogo} from "../../models/catalogo";
 import { MatDialog } from '@angular/material/dialog';
-import { DialogoConfirmacionComponent } from "../Utilidades/dialogo-confimacion/dialogo-confirmacion.component"
+import { DialogoConfirmacionComponent } from "../../Utilidades/dialogo-confimacion/dialogo-confirmacion.component"
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
