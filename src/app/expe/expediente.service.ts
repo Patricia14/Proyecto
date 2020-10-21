@@ -13,22 +13,22 @@ export class ExpedienteService {
   constructor(private http: HttpClient) { }
 
   getExpedientes() {
-    return this.http.get(`${this.baseUrl}/getAllex.php`);
+    return this.http.get(`${this.baseUrl}/expediente/getAllex.php`);
   }
 
   getExpediente(id_expediente: string | number) {
-    return this.http.get(`${this.baseUrl}/get.php?idExpediente=${id_expediente}`);
+    return this.http.get(`${this.baseUrl}/expediente/getex.php?idExpediente=${id_expediente}`);
   }
 
   addExpediente(expediente: Expediente) {
-    return this.http.post(`${this.baseUrl}/postex.php`, expediente);
+    return this.http.post(`${this.baseUrl}/expediente/postex.php`, expediente);
   }
 
   deleteExpediente(expediente: Expediente) {
-    return this.http.delete(`${this.baseUrl}/deleteex.php?idExpediente=${expediente.id_expediente}`);
+    return this.http.delete(`${this.baseUrl}/expediente/deleteex.php?idExpediente=${expediente.id_expediente}`);
   }
 
   updateExpediente(expediente: Expediente) {
-    return this.http.put(`${this.baseUrl}/updateex.php`, expediente);
+    return this.http.put(`${this.baseUrl}/expediente/updateex.php`, expediente);
   }
 }
