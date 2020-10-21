@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AgregarCatalogoComponent } from './agregar-catalogo/agregar-catalogo.component';
-import { ListarCatalogoComponent } from './listar-catalogo/listar-catalogo.component';
-import { EditarCatalogoComponent } from './editar-catalogo/editar-catalogo.component';
+import { AgregarCatalogoComponent } from './catalogo/agregar-catalogo/agregar-catalogo.component';
+import { ListarCatalogoComponent } from './catalogo/listar-catalogo/listar-catalogo.component';
+import { EditarCatalogoComponent } from './catalogo/editar-catalogo/editar-catalogo.component';
 import { AgregarMascotaComponent } from './Mascota/agregar-mascota/agregar-mascota.component';
 import { ListarMascotasComponent } from './Mascota/listar-mascotas/listar-mascotas.component';
 import { EditarMascotaComponent } from './Mascota/editar-mascota/editar-mascota.component';
@@ -29,10 +29,10 @@ const routes: Routes = [
   { path: "expediente/actualizar/:id_expediente", component:ActualizarExpedienteComponent},
   { path: 'expediente/agregar', component:AgregarExpedienteComponent },
   { path: 'expediente/mostrar', component:MostrarExpedienteComponent },
+  { path: "catalogos", component: ListarCatalogoComponent },
+  { path: "catalogo/agregar", component: AgregarCatalogoComponent },
+  { path: "catalogo/editar/:id_catalogo", component: EditarCatalogoComponent },
   { path: "acerca-de", component: AcercaDeComponent },
-  { path: "listar-catalogo", component: ListarCatalogoComponent },
-  { path: "editar-catalogo/:id_catalogo", component: EditarCatalogoComponent },
-  { path: "agregar-catalogo", component: AgregarCatalogoComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'registracion', component: RegistroComponent },

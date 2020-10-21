@@ -24,7 +24,7 @@ export class AgregarCatalogoComponent implements OnInit {
       this.snackBar.open('Catalogo guardada', undefined, {
         duration: 1500,
       });
-      this.router.navigate(['/catalogo']);
+      this.router.navigate(['/catalogos']);
     })
   }
 

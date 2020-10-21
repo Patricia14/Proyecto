@@ -23,7 +23,7 @@ export class AgregarExpedienteComponent implements OnInit {
     this.opcionSeleccionadoExpe = "Selecciona";
   }
 
-  expedientesModel = new Expediente(0,"","",0,"")
+  expedientesModel = new Expediente(0,"")
 
   onSubmit() {
     this.expedientesModel.id_cita = this.opcionSeleccionadoExpe;

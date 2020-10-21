@@ -22,7 +22,7 @@ export class EditarCatalogoComponent implements OnInit {
   }
 
   volver() {
-    this.router.navigate(['/editar-catalogo']);
+    this.router.navigate(['/catalogos']);
   }
 
   onSubmit() {
