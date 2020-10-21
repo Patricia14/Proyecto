@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { ExpedienteService } from './expediente.service';
 
-describe('MascotasService', () => {
+describe('ExpedientesService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {

@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'usuarios', component:ListarUsuarioComponent },
   { path: 'usuarios/agregar', component: AgregarUsuarioComponent },
   { path: "usuarios/editar/:id_usuario", component: EditarUsuarioComponent },
-  { path: 'expediente/actualizar', component:ActualizarExpedienteComponent},
+  { path: "expediente/actualizar/:id_expediente", component:ActualizarExpedienteComponent},
   { path: 'expediente/agregar', component:AgregarExpedienteComponent },
   { path: 'expediente/mostrar', component:MostrarExpedienteComponent },
   { path: "acerca-de", component: AcercaDeComponent },
