@@ -8,7 +8,7 @@ if (!$jsonCatalogo) {
 }
 $bd = include_once "../bd.php";
 $sentencia = $bd->prepare("insert into catalogo(nombre_catalogo, precio_catalogo, imagen_catalogo, descripcion_catalogo) VALUES (?,?,?,?)");
-$resultado = $sentencia->execute([$jsonCatalogo->nombre, $jsonCatalogo->precio, $jsonCatalogo->imagen, $jsonCatalogo->descripcion]);
+$resultado = $sentencia->execute([$jsonCatalogo->nombre_catalogo, $jsonCatalogo->precio_catalogo, $jsonCatalogo->imagen_catalogo, $jsonCatalogo->descripcion_catalogo]);
 echo json_encode([
     "resultado" => $resultado,
 ]);
