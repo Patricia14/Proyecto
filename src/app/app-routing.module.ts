@@ -18,6 +18,9 @@ import { AgregarExpedienteComponent } from './expe/agregar-expediente/agregar-ex
 import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-expediente.component';
 import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.component';
 import { EditarUsuarioComponent } from './usuario/editar-usuario/editar-usuario.component';
+import { ActualizarCitaComponent } from './cita/actualizar-cita/actualizar-cita.component';
+import { AgregarCitaComponent } from './cita/agregar-cita/agregar-cita.component';
+import { MostrarCitaComponent } from './cita/mostrar-cita/mostrar-cita.component';
 
 const routes: Routes = [
   { path: "mascotas", component: ListarMascotasComponent },
@@ -29,6 +32,9 @@ const routes: Routes = [
   { path: "expediente/actualizar/:id_expediente", component:ActualizarExpedienteComponent},
   { path: 'expediente/agregar', component:AgregarExpedienteComponent },
   { path: 'expediente/mostrar', component:MostrarExpedienteComponent },
+  { path: "cita/actualizar/:id_cita", component:ActualizarCitaComponent},
+  { path: 'cita/agregar', component:AgregarCitaComponent },
+  { path: "cita/mostrar", component:MostrarCitaComponent },
   { path: "catalogos", component: ListarCatalogoComponent },
   { path: "catalogo/agregar", component: AgregarCatalogoComponent },
   { path: "catalogo/editar/:id_catalogo", component: EditarCatalogoComponent },

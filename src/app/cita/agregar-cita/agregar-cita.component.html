@@ -1,0 +1,29 @@
+
+
+<h2>Agregar Cita <mat-icon>create</mat-icon>
+</h2>
+<form (ngSubmit)="onSubmit()" #formCita="ngForm">
+    <mat-form-field>
+        <input matInput name="fecha" [(ngModel)]="citaModel.fecha_cita"
+            type="date">
+    </mat-form-field>
+    
+<p>
+        <mat-form-field>
+            <input matInput name="hora" [(ngModel)]="citaModel.hora_cita" type="time" placeholder="hora">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="descripcion" [(ngModel)]="citaModel.descripcion_cita" type="text" placeholder="descripcion">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="Cliente" [(ngModel)]="citaModel.id_cliente" type="number" placeholder="Cliente">
+        </mat-form-field>
+    </p>
+    <p>
+        <button type="submit" mat-flat-button color="accent">Guardar</button>
+    </p>
+</form>

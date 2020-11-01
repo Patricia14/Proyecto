@@ -26,6 +26,7 @@ export class EditarUsuarioComponent implements OnInit {
 
     volver() {
       this.router.navigate(['/usuarios']);
+      
     }
 
     onSubmit() {

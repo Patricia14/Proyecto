@@ -1,0 +1,48 @@
+<h2>Listado de Citas</h2>
+<table mat-table [dataSource]="citas" class="mat-elevation-z8" style="width: 100%;">
+
+    <ng-container matColumnDef="id_cita">
+        <th mat-header-cell *matHeaderCellDef>ID de la cita</th>
+        <td mat-cell *matCellDef="let cita"> {{cita.id_cita}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="fecha_cita">
+        <th mat-header-cell *matHeaderCellDef>fecha de la cita</th>
+        <td mat-cell *matCellDef="let cita"> {{cita.fecha_cita}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="hora_cita">
+        <th mat-header-cell *matHeaderCellDef>hora de la cita</th>
+        <td mat-cell *matCellDef="let cita"> {{cita.hora_cita}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="descripcion_cita">
+        <th mat-header-cell *matHeaderCellDef>Descripción de la cita</th>
+        <td mat-cell *matCellDef="let cita"> {{cita.descripcion_cita}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="id_cliente">
+        <th mat-header-cell *matHeaderCellDef>Cliente</th>
+        <td mat-cell *matCellDef="let cita"> {{cita.id_cliente}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="editar">
+        <th mat-header-cell *matHeaderCellDef>Editar</th>
+        <td mat-cell *matCellDef="let cita">
+            <a mat-icon-button [routerLink]="['/cita/actualizar', cita.id_cita ]">
+                <mat-icon color="primary">edit</mat-icon>
+            </a>
+        </td>
+    </ng-container>
+    <ng-container matColumnDef="eliminar">
+        <th mat-header-cell *matHeaderCellDef>Eliminar</th>
+        <td mat-cell *matCellDef="let cita">
+            <button (click)="eliminarCita(cita)" mat-icon-button>
+                <mat-icon color="warn">delete</mat-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['id_cita','fecha_cita', 'hora_cita','descripcion_cita','id_cliente', 'editar', 'eliminar']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['id_cita','fecha_cita', 'hora_cita','descripcion_cita','id_cliente', 'editar', 'eliminar'];"></tr>
+</table>

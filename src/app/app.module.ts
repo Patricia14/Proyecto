@@ -34,8 +34,12 @@ import { ListarUsuarioComponent } from './usuario/listar-usuario/listar-usuario.
 import { ActualizarExpedienteComponent } from './expe/actualizar-expediente/actualizar-expediente.component';
 import { AgregarExpedienteComponent } from './expe/agregar-expediente/agregar-expediente.component';
 import { MostrarExpedienteComponent } from './expe/mostrar-expediente/mostrar-expediente.component';
+import { ActualizarCitaComponent } from './cita/actualizar-cita/actualizar-cita.component';
+import { AgregarCitaComponent } from './cita/agregar-cita/agregar-cita.component';
+import { MostrarCitaComponent } from './cita/mostrar-cita/mostrar-cita.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from 'angularx-social-login';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +62,10 @@ import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from '
     ActualizarExpedienteComponent,
     AgregarExpedienteComponent,
     MostrarExpedienteComponent,
+    ActualizarCitaComponent,
+    AgregarCitaComponent,
+    MostrarCitaComponent,
+   
   ],
   entryComponents: [
     DialogoConfirmacionComponent,
