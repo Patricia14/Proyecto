@@ -12,15 +12,17 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class ActualizarExpedienteComponent implements OnInit {
 
   public expediente: Expediente = new Expediente(0,"");
-  unidadesExpe = [];
-
+  //unidadesExpe = [];
+  opcionSeleccionadoExpe;
+  unidadesExpe;
+  seleccion;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private expedienteService: ExpedienteService,
     private snackBar: MatSnackBar) { }
 
   ngOnInit() {
-    this.unidadesExpe = ["1","2","3","4","5","6","7","8"];
+    this.cmbCita();
     let idExpediente = this.route.snapshot.paramMap.get("id_expediente");
     this.expedienteService.getExpediente(idExpediente).subscribe((expediente: Expediente) => this.expediente = expediente)
   }
@@ -28,10 +30,11 @@ export class ActualizarExpedienteComponent implements OnInit {
    this.router.navigate(['/expediente/mostrar']);
     //console.log(this.expediente);
   }
-
+  expedientesModel = new Expediente(0, "")
   onSubmit() {
-    this.expediente.id_cita = this.unidadesExpe.indexOf(this.expediente.id_cita);
-    console.log(this.expediente);
+
+    //this.expediente.id_cita = this.unidadesExpe.indexOf(this.expediente.id_cita);
+    this.expedientesModel.id_cita = this.seleccion;
     this.expedienteService.updateExpediente(this.expediente).subscribe(() => {
       this.snackBar.open('Expediente actualizado', undefined, {
         duration: 1500,
@@ -41,6 +44,17 @@ export class ActualizarExpedienteComponent implements OnInit {
       
       this.volver();
     });
+  }
+  cmbCita() {
+    return this.expedienteService
+      .obternetCita()
+      .subscribe(expediente => {
+        this.unidadesExpe = expediente;
+      });
+  }
+
+  prueba(e) {
+    this.seleccion = e.target.value;
   }
 
 }

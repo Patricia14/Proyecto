@@ -30,4 +30,5 @@ export class UsuarioService {
   updateUsuario(usuario: Usuario) {
     return this.http.put(`${this.baseUrl}/usuario/update.php`, usuario);
   }
+  
 }

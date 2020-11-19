@@ -19,11 +19,18 @@
         </mat-form-field>
     </p>
     <p>
-        <mat-form-field>
-            <input matInput name="Cliente" [(ngModel)]="citaModel.id_cliente" type="number" placeholder="Cliente">
-        </mat-form-field>
+        
+        <label>Selecciona Mascota</label>
+        <select class="form-control" [(ngModel)]="opcionSeleccionadoCita" name="opcionSeleccionadoCita" (change)="prueba($event)"> 
+            <option disabled value="Selecciona">Selecciona</option>
+            <option *ngFor="let u of unidadesCita" value="{{u.id_mascota}}">
+                {{u.id_mascota}} - {{u.nombre_mascota}}
+                
+            </option>
+        </select>
     </p>
     <p>
         <button type="submit" mat-flat-button color="accent">Guardar</button>
     </p>
+   
 </form>

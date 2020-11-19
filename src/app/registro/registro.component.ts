@@ -59,7 +59,7 @@ export class RegistroComponent implements OnInit {
   }
 
   postdata(angForm1) {
-    this.tipo = "3";
+    this.tipo = "2";
     this.dataService.userregistration(angForm1.value.name, angForm1.value.apellido, angForm1.value.email, angForm1.value.password, this.tipo)
       .pipe(first())
       .subscribe(
