@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ExpedienteService } from '../expediente.service';
 import { Expediente } from '../expediente';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogoConfirmacionComponent } from "../../Utilidades/dialogo-confimacion/dialogo-confirmacion.component" ;
+import { DialogoConfirmacionComponent } from "../../Utilidades/dialogo-confimacion/dialogo-confirmacion.component";
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -13,7 +13,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class MostrarExpedienteComponent implements OnInit {
 
   public expedientes: Expediente[] = [
-    new Expediente(0,"Muestra")
+    new Expediente(0, "Muestra")
   ];
 
   constructor(private expedienteService: ExpedienteService, private dialogo: MatDialog, private snackBar: MatSnackBar) { }
@@ -45,8 +45,5 @@ export class MostrarExpedienteComponent implements OnInit {
     return this.expedienteService
       .getExpedientes()
       .subscribe((expediente: Expediente[]) => this.expedientes = expediente);
-
-
-}
-
+  }
 }

@@ -31,4 +31,8 @@ export class ExpedienteService {
   updateExpediente(expediente: Expediente) {
     return this.http.put(`${this.baseUrl}/expediente/updateex.php`, expediente);
   }
+
+  obternetCita(){
+    return this.http.get(`${this.baseUrl}/expediente/cmbCita.php`);
+  }
 }

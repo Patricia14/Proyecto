@@ -31,7 +31,7 @@ export class ActualizarExpedienteComponent implements OnInit {
 
   onSubmit() {
     this.expediente.id_cita = this.unidadesExpe.indexOf(this.expediente.id_cita);
-    //console.log(this.expediente);
+    console.log(this.expediente);
     this.expedienteService.updateExpediente(this.expediente).subscribe(() => {
       this.snackBar.open('Expediente actualizado', undefined, {
         duration: 1500,
