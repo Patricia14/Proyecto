@@ -8,7 +8,7 @@ if (!$jsonMascota) {
 }
 $bd = include_once "bd.php";
 $sentencia = $bd->prepare("insert into mascota(nombre_mascota, edad_mascota, raza_mascota) values (?,?,?)");
-$resultado = $sentencia->execute([$jsonMascota->nombre, $jsonMascota->edad, $jsonMascota->raza]);
+$resultado = $sentencia->execute([$jsonMascota->nombre_mascota, $jsonMascota->edad_mascota, $jsonMascota->raza_mascota]);
 echo json_encode([
     "resultado" => $resultado,
 ]);

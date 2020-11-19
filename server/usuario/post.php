@@ -11,7 +11,7 @@ if ( !$jsonUsuario ) {
 }
 $bd = include_once '../bd.php';
 $sentencia = $bd->prepare( 'insert into usuario(nombre_usuario, apellido_usuario, correo_usuario, password_usuario, tipo_usuario) values (?,?,?,?,?)' );
-$resultado = $sentencia->execute( [$jsonUsuario->nombre, $jsonUsuario->apellido, $jsonUsuario->email, $jsonUsuario->password, $jsonUsuario->tipo_usuario] );
+$resultado = $sentencia->execute( [$jsonUsuario->nombre_usuario, $jsonUsuario->apellido_usuario, $jsonUsuario->correo_usuario, $jsonUsuario->password_usuario, $jsonUsuario->tipo_usuario] );
 echo json_encode( [
     'resultado' => $resultado,
 ] );

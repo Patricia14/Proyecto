@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-10-2020 a las 06:50:01
+-- Tiempo de generación: 22-10-2020 a las 02:09:37
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -35,6 +35,15 @@ CREATE TABLE `catalogo` (
   `descripcion_catalogo` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `catalogo`
+--
+
+INSERT INTO `catalogo` (`id_catalogo`, `nombre_catalogo`, `precio_catalogo`, `imagen_catalogo`, `descripcion_catalogo`) VALUES
+(1, 'pechera', 10, 'imagen', 'Pechera para perro de 37g'),
+(3, 'cosa', 5, 'otra cosa', 'ahi va'),
+(4, 'pelota', 5, 'pelota redonda', 'redonda');
+
 -- --------------------------------------------------------
 
 --
@@ -48,6 +57,14 @@ CREATE TABLE `cita` (
   `descripcion_cita` varchar(255) NOT NULL,
   `id_cliente` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `cita`
+--
+
+INSERT INTO `cita` (`id_cita`, `fecha_cita`, `hora_cita`, `descripcion_cita`, `id_cliente`) VALUES
+(1, '2020-10-24', '08:40:10', 'Urgente', 23),
+(2, '2020-10-24', '08:40:10', 'Pendiente', 23);
 
 -- --------------------------------------------------------
 
@@ -73,6 +90,14 @@ CREATE TABLE `expediente` (
   `descripcion_expediente` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Volcado de datos para la tabla `expediente`
+--
+
+INSERT INTO `expediente` (`id_expediente`, `id_cita`, `descripcion_expediente`) VALUES
+(11, 1, 'expediente nuevo'),
+(12, 2, 'expediente nuevo2');
+
 -- --------------------------------------------------------
 
 --
@@ -91,11 +116,8 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`id_mascota`, `nombre_mascota`, `edad_mascota`, `raza_mascota`) VALUES
-(1, 'Rex', 8, 'Pastor aleman'),
-(15, 'Luki', 1, 'Angora'),
-(16, '', 0, ''),
-(17, 'Paco', 15, 'Chocoyo'),
-(18, 'Paquita', 7, 'Chocoyo');
+(22, 'Luki', 2, 'Angora'),
+(23, 'Blacky', 1, 'Carey');
 
 -- --------------------------------------------------------
 
@@ -108,6 +130,15 @@ CREATE TABLE `tipo_usuario` (
   `nombre_tipo_usuario` varchar(100) NOT NULL,
   `descripcion_tipo_usuario` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `tipo_usuario`
+--
+
+INSERT INTO `tipo_usuario` (`id_tipo_usuario`, `nombre_tipo_usuario`, `descripcion_tipo_usuario`) VALUES
+(0, 'Administrador', ''),
+(1, 'Veterinario', ''),
+(2, 'Cliente', '');
 
 -- --------------------------------------------------------
 
@@ -123,6 +154,15 @@ CREATE TABLE `usuario` (
   `password_usuario` varchar(100) DEFAULT NULL,
   `tipo_usuario` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `usuario`
+--
+
+INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `correo_usuario`, `password_usuario`, `tipo_usuario`) VALUES
+(8, 'Patricia', 'Quintanilla', 'lupe_624@hotmail.com', '23rwef', 1),
+(11, 'José', 'Bonilla', 'jose@hotmail.com', '123', 0),
+(12, 'Reynaldo', 'Mendoza', 'Reynaldo@hotmail.com', '123', 0);
 
 --
 -- Índices para tablas volcadas
@@ -183,13 +223,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `catalogo`
 --
 ALTER TABLE `catalogo`
-  MODIFY `id_catalogo` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_catalogo` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `id_cita` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_cita` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente_mascota`
@@ -201,25 +241,25 @@ ALTER TABLE `cliente_mascota`
 -- AUTO_INCREMENT de la tabla `expediente`
 --
 ALTER TABLE `expediente`
-  MODIFY `id_expediente` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_expediente` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id_mascota` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id_mascota` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
-  MODIFY `id_tipo_usuario` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_tipo_usuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_usuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Restricciones para tablas volcadas
@@ -242,7 +282,7 @@ ALTER TABLE `cliente_mascota`
 -- Filtros para la tabla `expediente`
 --
 ALTER TABLE `expediente`
-  ADD CONSTRAINT `expediente_ibfk_1` FOREIGN KEY (`id_cita`) REFERENCES `cita` (`id_cita`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `expediente_ibfk_1` FOREIGN KEY (`id_cita`) REFERENCES `cita` (`id_cita`);
 
 --
 -- Filtros para la tabla `usuario`
