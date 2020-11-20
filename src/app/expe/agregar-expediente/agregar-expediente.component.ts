@@ -36,7 +36,8 @@ export class AgregarExpedienteComponent implements OnInit {
   expedientesModel = new Expediente(0, "")
 
   onSubmit() {
-    console.log(this.seleccion);
+    console.log(this.expedientesModel)
+    console.log(this.expedienteService)
     this.expedientesModel.id_cita = this.seleccion;
     this.expedienteService.addExpediente(this.expedientesModel).subscribe(() => {
       this.snackBar.open('Expediente Registrato', undefined, {

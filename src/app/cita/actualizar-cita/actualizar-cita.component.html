@@ -1,7 +1,6 @@
 <h2>Editar Cita <mat-icon>perm_identity</mat-icon></h2>
 <form (ngSubmit)="onSubmit()" #formCita="ngForm">
  
-   
     <p>
         
         <mat-form-field>
@@ -23,9 +22,11 @@
 <p><label>Seleccione el Id cliente</label>
     <select class="form-control" [(ngModel)]="cita.id_cliente" name="opcionSeleccionado">
         <option disabled value="Selecciona">Selecciona</option>
-        <option *ngFor="let u of unidadesCita" value="{{u}}">
-            {{u}}
+        <option *ngFor="let u of unidadesCita" value="{{u.id_mascota}}">
+            {{u.id_mascota}} - {{u.nombre_mascota}}
+            
         </option>
+        
     </select></p>
     
     <p>

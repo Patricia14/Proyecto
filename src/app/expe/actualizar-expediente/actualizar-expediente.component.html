@@ -6,8 +6,9 @@
         <label>Seleccione el Id Cita</label>
         <select class="form-control" [(ngModel)]="expediente.id_cita" name="opcionSeleccionado">
             <option disabled value="Selecciona">Selecciona</option>
-            <option *ngFor="let u of unidadesExpe" value="{{u}}">
-                {{u}}
+            <option *ngFor="let u of unidadesExpe" value="{{u.id_cita}}">
+                {{u.id_cita}} - {{u.nombre_mascota}}
+                
             </option>
         </select>
     </p>  

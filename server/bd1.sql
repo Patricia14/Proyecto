@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 22-10-2020 a las 02:09:37
+-- Tiempo de generación: 19-11-2020 a las 20:05:47
 -- Versión del servidor: 10.4.14-MariaDB
 -- Versión de PHP: 7.4.11
 
@@ -41,8 +41,9 @@ CREATE TABLE `catalogo` (
 
 INSERT INTO `catalogo` (`id_catalogo`, `nombre_catalogo`, `precio_catalogo`, `imagen_catalogo`, `descripcion_catalogo`) VALUES
 (1, 'pechera', 10, 'imagen', 'Pechera para perro de 37g'),
-(3, 'cosa', 5, 'otra cosa', 'ahi va'),
-(4, 'pelota', 5, 'pelota redonda', 'redonda');
+(3, 'Comedero', 5, 'otra cosa', 'Comedero para perro'),
+(4, 'pelota', 5, 'pelota redonda', 'redonda'),
+(8, 'Collar', 1.5, 'imagen', 'verde');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,12 @@ CREATE TABLE `cita` (
 
 INSERT INTO `cita` (`id_cita`, `fecha_cita`, `hora_cita`, `descripcion_cita`, `id_cliente`) VALUES
 (1, '2020-10-24', '08:40:10', 'Urgente', 23),
-(2, '2020-10-24', '08:40:10', 'Pendiente', 23);
+(2, '2020-10-24', '08:40:10', 'Pendiente', 23),
+(7, '2020-11-02', '21:35:00', 'boo', 23),
+(10, '2020-11-01', '21:35:00', 'urgente', 23),
+(12, '2020-11-21', '17:57:00', 'pendiente', 1),
+(13, '2020-11-18', '20:58:00', 'urgente', 1),
+(14, '2020-11-20', '22:02:00', 'rojo', 1);
 
 -- --------------------------------------------------------
 
@@ -96,7 +102,9 @@ CREATE TABLE `expediente` (
 
 INSERT INTO `expediente` (`id_expediente`, `id_cita`, `descripcion_expediente`) VALUES
 (11, 1, 'expediente nuevo'),
-(12, 2, 'expediente nuevo2');
+(14, 1, 'expediente nuevo4'),
+(15, 7, 'falta'),
+(17, 1, 'Blacky');
 
 -- --------------------------------------------------------
 
@@ -116,8 +124,10 @@ CREATE TABLE `mascota` (
 --
 
 INSERT INTO `mascota` (`id_mascota`, `nombre_mascota`, `edad_mascota`, `raza_mascota`) VALUES
+(1, 'Rocky', 5, 'lo que sea'),
 (22, 'Luki', 2, 'Angora'),
-(23, 'Blacky', 1, 'Carey');
+(23, 'Blacky', 1, 'Carey'),
+(24, 'Rex', 8, 'Pastor aleman1');
 
 -- --------------------------------------------------------
 
@@ -160,9 +170,11 @@ CREATE TABLE `usuario` (
 --
 
 INSERT INTO `usuario` (`id_usuario`, `nombre_usuario`, `apellido_usuario`, `correo_usuario`, `password_usuario`, `tipo_usuario`) VALUES
-(8, 'Patricia', 'Quintanilla', 'lupe_624@hotmail.com', '23rwef', 1),
+(8, 'Patricia Guadalupe', 'Quintanilla', 'lupe_624@hotmail.com', '23rwef', 1),
 (11, 'José', 'Bonilla', 'jose@hotmail.com', '123', 0),
-(12, 'Reynaldo', 'Mendoza', 'Reynaldo@hotmail.com', '123', 0);
+(12, 'Reynaldo', 'Mendoza', 'Reynaldo@hotmail.com', '123', 0),
+(13, 'Alberto', 'Martínez', 'Alberto@hotmail.com', '123', 0),
+(16, 'dany', 'mejilla', 'dany@hotmail.com', '123456789', 2);
 
 --
 -- Índices para tablas volcadas
@@ -223,13 +235,13 @@ ALTER TABLE `usuario`
 -- AUTO_INCREMENT de la tabla `catalogo`
 --
 ALTER TABLE `catalogo`
-  MODIFY `id_catalogo` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_catalogo` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT de la tabla `cita`
 --
 ALTER TABLE `cita`
-  MODIFY `id_cita` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_cita` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT de la tabla `cliente_mascota`
@@ -241,13 +253,13 @@ ALTER TABLE `cliente_mascota`
 -- AUTO_INCREMENT de la tabla `expediente`
 --
 ALTER TABLE `expediente`
-  MODIFY `id_expediente` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id_expediente` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT de la tabla `mascota`
 --
 ALTER TABLE `mascota`
-  MODIFY `id_mascota` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id_mascota` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
@@ -259,7 +271,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `usuario`
 --
 ALTER TABLE `usuario`
-  MODIFY `id_usuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id_usuario` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Restricciones para tablas volcadas

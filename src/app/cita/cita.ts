@@ -8,7 +8,7 @@ export class Cita {
         public id_cliente: number,
         public fecha_cita?: Date,
         public hora_cita?: Time,
-        public id_cita?: number,
+        public id_cita?: number
 
         
 

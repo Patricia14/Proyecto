@@ -31,4 +31,7 @@ export class CitaService {
   updateCita(cita: Cita) {
     return this.http.put(`${this.baseUrl}/cita/updatecita.php`, cita);
   }
+  obternerCita(){
+    return this.http.get(`${this.baseUrl}/cita/cmbMascota.php`);
+  }
 }
