@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RegistroService } from '../services/registro.service';
 import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 
 @Component({
@@ -16,14 +17,15 @@ export class LoginComponent implements OnInit {
   loginbtn: boolean;
   logoutbtn: boolean;
   angForm: FormGroup;
-
+  tipo: string;
+  pwd: string;
   user: SocialUser;
   loggedIn: boolean;
 
   constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router, private authService: SocialAuthService) {
     this.angForm = this.fb.group({
-      email: ['', [Validators.required, Validators.minLength(1), Validators.email]],
-      password: ['', Validators.required]
+      email: [''],
+      password: ['']
     });
 
     dataService.getLoggedInName.subscribe(name => this.changeName(name));
@@ -45,15 +47,28 @@ export class LoginComponent implements OnInit {
       console.log("loggedin");
       this.loginbtn = false;
       this.logoutbtn = true
+      this.angForm.setValue({email: this.user.email, password: this.pwd});
+      this.dataService.userregistration(this.user.firstName, this.user.lastName, this.user.email, this.pwd, this.tipo)
+      .pipe(first())
+      .subscribe(
+        data => {
+          alert("La contraseña para el ingreso es:" +this.pwd)
+        },
+        error => {
+          alert("Este usuario ya esta registrado con ese correo")
+        });
     });
   }
 
-  log_google(){
-    try{this.dataService.signInWithGoogle();}
-    catch(error){console.log(error)}
-    this.router.navigate(['dashboard']);
+  signInWithGoogle(): void {
+    try {
+      this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
+      this.router.navigate(['login']);
+      this.pwd = this.makeid();
+      this.tipo = '2';
+    }
+    catch (error) { console.log(error) }
   }
-
 
   private changeName(name: boolean): void {
     this.logoutbtn = name;
@@ -79,5 +94,15 @@ export class LoginComponent implements OnInit {
   }
   get email() { return this.angForm.get('email'); }
   get password() { return this.angForm.get('password'); }
+
+  makeid() {
+    var text = "";
+    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+
+    for (var i = 0; i < 6; i++)
+      text += possible.charAt(Math.floor(Math.random() * possible.length));
+
+    return text;
+  }
 
 }

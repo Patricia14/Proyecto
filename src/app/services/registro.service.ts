@@ -1,8 +1,9 @@
-import { Injectable, Output, EventEmitter } from '@angular/core';
+import { Injectable, Output, EventEmitter, OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Registro } from '../models/registro';
-import { SocialAuthService } from "angularx-social-login";
+import { first } from 'rxjs/operators';
+import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
 
@@ -11,9 +12,14 @@ import { Router } from '@angular/router';
 })
 export class RegistroService {
   redirectUrl: string;
+  user: SocialUser;
+  passwd: string;
+  tipo: string;
+  loggedIn: boolean;
   baseUrl: string = "http://localhost/server/login";
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-  constructor(private router: Router, private httpClient: HttpClient, private authService: SocialAuthService) { }
+  constructor(private router: Router, private httpClient: HttpClient, private authService: SocialAuthService) {
+  }
 
   public userLogin(username, password) {
     //alert(username)
@@ -24,12 +30,6 @@ export class RegistroService {
         return Registro;
       }));
   }
-
-  signInWithGoogle(): void {
-    this.authService.signIn(GoogleLoginProvider.PROVIDER_ID);
-  }
-
-
   public userregistration(name, apellido, email, pwd, tipo) {
     return this.httpClient.post<any>(this.baseUrl + '/registro.php', { name, apellido, email, pwd, tipo })
       .pipe(map(Registro => {
@@ -48,7 +48,7 @@ export class RegistroService {
   deleteToken() {
     localStorage.removeItem('token');
   }
-  
+
   isLoggedIn() {
     const usertoken = this.getToken();
     if (usertoken != null) {
@@ -56,4 +56,6 @@ export class RegistroService {
     }
     return false;
   }
+
+
 }
