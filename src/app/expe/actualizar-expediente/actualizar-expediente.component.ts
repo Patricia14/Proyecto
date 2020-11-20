@@ -28,7 +28,7 @@ export class ActualizarExpedienteComponent implements OnInit {
   }
   volver() {
    this.router.navigate(['/expediente/mostrar']);
-    //console.log(this.expediente);
+   console.log(this.expediente);
   }
   expedientesModel = new Expediente(0, "")
   onSubmit() {

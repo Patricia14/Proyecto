@@ -7,7 +7,7 @@ if (empty($_GET["idCita"])) {
 $idCita = $_GET["idCita"];
 $bd = include_once "../bd.php";
 
-$sentencia = $bd->prepare("SELECT fecha_cita, hora_cita, descripcion_cita, id_cliente FROM cita WHERE id_cita=?");
+$sentencia = $bd->prepare("SELECT id_cita, fecha_cita, hora_cita, descripcion_cita, id_cliente FROM cita WHERE id_cita=?");
 $sentencia->execute([$idCita]);
 $cita = $sentencia->fetchObject();
 echo json_encode($cita);
