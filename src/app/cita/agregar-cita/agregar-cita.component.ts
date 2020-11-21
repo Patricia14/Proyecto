@@ -4,6 +4,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Cita } from '../cita';
+import { first } from 'rxjs/operators';
+import { on } from 'process';
 
 @Component({
   selector: 'app-agregar-cita',
@@ -31,15 +33,24 @@ export class AgregarCitaComponent implements OnInit {
   }
   citaModel = new Cita("",0 )
 
+
   onSubmit() {
     this.citaModel.id_cliente = this.seleccion;
-    this.citaService.addCita(this.citaModel).subscribe(() => {
+    this.citaService.addCita(this.citaModel).pipe(first()).subscribe(() => {
       this.snackBar.open('Cita guardada', undefined, {
         duration: 1500,
-      });
+      },);
       this.router.navigate(['/cita/mostrar']);
+    },
+    error => {
+      alert("Fecha y hora reservadas, por favor ingrese una fecha o una hora diferente.")
+      this.snackBar.open('Fecha y hora reservadas, por favor ingrese una fecha o una hora diferente.', undefined, {
+        duration: 3000,
+      })
     })
   }
+
+
   cmbMascota() {
     return this.citaService
       .obternerCita()

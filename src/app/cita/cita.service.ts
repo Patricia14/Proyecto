@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Cita } from "./cita"
-
+import { map } from 'rxjs/operators';
 import { environment } from "../../environments/environment"
 @Injectable({
   providedIn: 'root'
@@ -22,6 +22,13 @@ export class CitaService {
 
   addCita(cita: Cita) {
     return this.http.post(`${this.baseUrl}/cita/postcita.php`, cita);
+  }
+
+  public userregistration(fecha, hora, descripcion, idCliente) {
+    return this.http.post<any>(this.baseUrl + '/cita/postcita.php', { fecha, hora, descripcion, idCliente })
+      .pipe(map(Cita => {
+        return Cita;
+      }));
   }
 
   deleteCita(cita: Cita) {
