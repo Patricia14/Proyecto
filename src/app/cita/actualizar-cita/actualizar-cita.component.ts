@@ -3,6 +3,7 @@ import { Cita } from '../cita';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CitaService } from '../cita.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { first } from 'rxjs/operators';
 //import { time } from 'console';
 
 @Component({
@@ -36,14 +37,17 @@ citaModel = new Cita("",0)
   onSubmit() {
     //this.cita.id_cliente = this.unidadesCita.indexOf(this.cita.id_cliente);
     this.citaModel.id_cita = this.seleccion;
-    this.citaService.updateCita(this.cita).subscribe(() => {
+    this.citaService.updateCita(this.cita).pipe(first()).subscribe(() => {
       this.snackBar.open('Cita actualizado', undefined, {
         duration: 1500,
-       
-        
       });
-      
       this.volver();
+    },
+    error => {
+      alert("Fecha y hora reservadas, por favor ingrese una fecha o una hora diferente.")
+      this.snackBar.open('Fecha y hora reservadas, por favor ingrese una fecha o una hora diferente.', undefined, {
+        duration: 3000,
+      })
     });
   }
   cmbMascota() {
