@@ -1,5 +1,4 @@
-<?php
- ?>
+
 <?php
 header('Access-Control-Allow-Origin: http://localhost:4200');
 header('Access-Control-Allow-Methods: PUT');
@@ -13,17 +12,12 @@ if (!$jsonCita) {
 }
 $bd = include_once '../bd.php';
 $sentencia = $bd->prepare("UPDATE cita SET fecha_cita = ?,hora_cita = ?, descripcion_cita = ?, id_cliente = ? WHERE id_cita = ?");
-$resultado = $sentencia->execute([$jsonCita->fecha_cita, $jsonCita->hora_cita, $jsonCita->descripcion_cita, $jsonCita->id_cliente, $jsonCita->id_cita]);
-echo json_encode($resultado);
+$resultado = $sentencia->execute([$jsonCita->fecha_cita, $jsonCita->hora_cita, $jsonCita->descripcion_cita, $jsonCita->id_cliente, $jsonCita->id_cita]) or die ("Error : ". mysql_error($sentencia));
 
-/*$sentencia = $bd->query("SELECT COUNT(fecha_cita)FROM cita WHERE fecha_cita =? && hora_cita=?");
-$expediente = $sentencia->fetchAll(PDO::FETCH_OBJ);
-
-if($expediente==0){
-    $sentencia = $bd->prepare("UPDATE cita SET fecha_cita = ?,hora_cita = ?, descripcion_cita = ?, id_cliente = ? WHERE id_cita = ?");
-    $resultado = $sentencia->execute([$jsonCita->fecha_cita, $jsonCita->hora_cita, $jsonCita->descripcion_cita, $jsonCita->id_cliente, $jsonCita->id_cita]);
-    echo json_encode($resultado);
-}else{
-    echo "Fecha ocupada";
+if($resultado){
+	echo json_encode(["resultado" => $resultado,]);
 }
-*/
+	else{
+			http_response_code( 404 );
+			echo "Fecha y hora ya utilizadas, ";
+	}

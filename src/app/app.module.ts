@@ -39,6 +39,7 @@ import { AgregarCitaComponent } from './cita/agregar-cita/agregar-cita.component
 import { MostrarCitaComponent } from './cita/mostrar-cita/mostrar-cita.component';
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from 'angularx-social-login';
+import { NgxPermissionsModule } from 'ngx-permissions'
 
 
 @NgModule({
@@ -88,7 +89,8 @@ import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from '
     MatDialogModule,
     MatSnackBarModule,
     ReactiveFormsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    NgxPermissionsModule.forRoot()
   ],
   providers: [
     {

@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { CatalogoService } from "../../services/catalogo.service";
-import {Catalogo} from "../../models/catalogo";
+import { Catalogo } from "../../models/catalogo";
 import { MatDialog } from '@angular/material/dialog';
 import { DialogoConfirmacionComponent } from "../../Utilidades/dialogo-confimacion/dialogo-confirmacion.component"
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { RegistroService } from '../../services/registro.service';
 
 @Component({
   selector: 'app-listar-catalogo',
@@ -15,7 +17,8 @@ export class ListarCatalogoComponent implements OnInit {
     new Catalogo("comedero para gatos", 5.00,"imagen","Comedero para gatos de color rojo")
   ];
 
-  constructor(private catalogoService: CatalogoService, private dialogo: MatDialog, private snackBar: MatSnackBar) { }
+  constructor(private catalogoService: CatalogoService, private dialogo: MatDialog, private snackBar: MatSnackBar,
+    private permissionsService: NgxPermissionsService, private rolesService: NgxRolesService, private dataService: RegistroService) { }
 
   eliminarCatalogo(catalogo: Catalogo) {
     this.dialogo
@@ -38,6 +41,7 @@ export class ListarCatalogoComponent implements OnInit {
 
   ngOnInit() {
     this.obtenerCatalogo();
+    this.permissionsService.loadPermissions([this.dataService.getToken()]);
   }
 
   obtenerCatalogo() {

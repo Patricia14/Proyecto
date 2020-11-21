@@ -3,8 +3,8 @@
 include_once("database.php");
 $postdata = file_get_contents( 'php://input' );
 if ( isset( $postdata ) && !empty( $postdata ) )
-$request = json_decode( $postdata );
  {
+    $request = json_decode( $postdata );
     $name = trim( $request->name );
     $apellido = trim( $request->apellido );
     $tipo = trim( $request->tipo );

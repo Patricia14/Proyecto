@@ -45,16 +45,18 @@ export class LoginComponent implements OnInit {
       this.user = user;
       this.loggedIn = (user != null);
       console.log("loggedin");
-      this.loginbtn = false;
-      this.logoutbtn = true
       this.angForm.setValue({email: this.user.email, password: this.pwd});
       this.dataService.userregistration(this.user.firstName, this.user.lastName, this.user.email, this.pwd, this.tipo)
       .pipe(first())
       .subscribe(
         data => {
-          alert("La contraseña para el ingreso es:" +this.pwd)
+          alert("La contraseña para el ingreso es:" + this.pwd)
         },
         error => {
+          this.dataService.deleteToken();
+          this.angForm.setValue({email: this.user.email, password: ''});
+          this.loginbtn = true;
+          this.logoutbtn = false;
           alert("Este usuario ya esta registrado con ese correo")
         });
     });
@@ -85,8 +87,7 @@ export class LoginComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          const redirect = this.dataService.redirectUrl ? this.dataService.redirectUrl : '/dashboard';
-          this.router.navigate([redirect]);
+          this.router.navigate(['/dashboard']);
         },
         error => {
           alert("Usuario o contraseña incorrectos")

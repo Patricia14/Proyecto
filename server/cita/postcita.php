@@ -8,5 +8,13 @@ if (!$jsonCita) {
 }
 $bd = include_once "../bd.php";
 $sentencia = $bd->prepare("INSERT INTO cita(fecha_cita, hora_cita, descripcion_cita, id_cliente) values (?,?,?,?)");
-$resultado = $sentencia->execute([$jsonCita->fecha_cita ,$jsonCita->hora_cita, $jsonCita->descripcion_cita, $jsonCita->id_cliente ]);
-echo json_encode(["resultado" => $resultado,]);
+$resultado = $sentencia->execute([$jsonCita->fecha_cita ,$jsonCita->hora_cita, $jsonCita->descripcion_cita, $jsonCita->id_cliente ]) or die ("Error : ". mysql_error($sentencia));
+
+if($resultado){
+	echo json_encode(["resultado" => $resultado,]);
+}
+	else{
+			http_response_code( 404 );
+			echo "Fecha y hora ya utilizadas, ";
+	}
+

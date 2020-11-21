@@ -2,7 +2,10 @@ import { Component } from '@angular/core';
 import { RegistroService } from './services/registro.service';
 import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { Registro } from './models/registro';
 import { Router } from '@angular/router';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +14,14 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
   title = 'Verterinaria pets';
+  usuario: Registro
   loginbtn: boolean;
   logoutbtn: boolean;
   user: SocialUser;
   loggedIn: boolean;
 
-  constructor(private dataService: RegistroService, private authService: SocialAuthService, private router: Router) {
+  constructor(private dataService: RegistroService, private authService: SocialAuthService, private router: Router,
+    private permissionsService: NgxPermissionsService, private rolesService: NgxRolesService) {
     dataService.getLoggedInName.subscribe(name => this.changeName(name));
     if (this.dataService.isLoggedIn()) {
       console.log("loggedin");
@@ -30,6 +35,8 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    console.log(this.dataService.getToken())
+    this.permissionsService.loadPermissions([this.dataService.getToken()]);
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);

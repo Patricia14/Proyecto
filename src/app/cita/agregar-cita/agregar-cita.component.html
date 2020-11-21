@@ -34,3 +34,38 @@
     </p>
    
 </form>
+
+<!-- POR SI SIRVE
+    <form (ngSubmit)="onSubmit()" #formCita="ngForm">
+    <mat-form-field>
+        <input matInput name="fecha" [(ngModel)]="citaModel.fecha_cita"
+            type="date">
+    </mat-form-field>
+    
+<p>
+        <mat-form-field>
+            <input matInput name="hora" [(ngModel)]="citaModel.hora_cita" type="time" placeholder="hora">
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput name="descripcion" [(ngModel)]="citaModel.descripcion_cita" type="text" placeholder="descripcion">
+        </mat-form-field>
+    </p>
+    <p>
+        
+        <label>Selecciona Mascota</label>
+        <select class="form-control" [(ngModel)]="opcionSeleccionadoCita" name="opcionSeleccionadoCita" (change)="prueba($event)"> 
+            <option disabled value="Selecciona">Selecciona</option>
+            <option *ngFor="let u of unidadesCita" value="{{u.id_mascota}}">
+                {{u.id_mascota}} - {{u.nombre_mascota}}
+                
+            </option>
+        </select>
+    </p>
+    <p>
+        <button type="submit" mat-flat-button color="accent">Guardar</button>
+    </p>
+   
+</form>
+-->

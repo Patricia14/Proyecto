@@ -6,27 +6,31 @@ import { first } from 'rxjs/operators';
 import { SocialAuthService, SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 import { Router } from '@angular/router';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RegistroService {
   redirectUrl: string;
+  usuario: Registro[];
   user: SocialUser;
   passwd: string;
   tipo: string;
   loggedIn: boolean;
   baseUrl: string = "http://localhost/server/login";
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
-  constructor(private router: Router, private httpClient: HttpClient, private authService: SocialAuthService) {
+  constructor(private router: Router, private httpClient: HttpClient, private authService: SocialAuthService,
+    private permissionsService: NgxPermissionsService) {
   }
 
   public userLogin(username, password) {
     //alert(username)
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
       .pipe(map(Registro => {
-        this.setToken(Registro[0].name);
+        this.setToken(Registro[0].tipo_usuario);
         this.getLoggedInName.emit(true);
+        this.permissionsService.loadPermissions([this.getToken()]);
         return Registro;
       }));
   }

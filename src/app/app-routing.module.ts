@@ -23,26 +23,26 @@ import { AgregarCitaComponent } from './cita/agregar-cita/agregar-cita.component
 import { MostrarCitaComponent } from './cita/mostrar-cita/mostrar-cita.component';
 
 const routes: Routes = [
-  { path: "mascotas", component: ListarMascotasComponent },
+  { path: "mascotas", component: ListarMascotasComponent, canActivate: [AuthguardGuard]},
   { path: "mascotas/agregar", component: AgregarMascotaComponent },
   { path: "mascotas/editar/:id_mascota", component: EditarMascotaComponent },
-  { path: 'usuarios', component:ListarUsuarioComponent },
+  { path: 'usuarios', component:ListarUsuarioComponent, canActivate: [AuthguardGuard] },
   { path: 'usuarios/agregar', component: AgregarUsuarioComponent },
   { path: "usuarios/editar/:id_usuario", component: EditarUsuarioComponent },
   { path: "expediente/actualizar/:id_expediente", component:ActualizarExpedienteComponent},
   { path: 'expediente/agregar', component:AgregarExpedienteComponent },
-  { path: 'expediente/mostrar', component:MostrarExpedienteComponent },
+  { path: 'expediente', component:MostrarExpedienteComponent, canActivate: [AuthguardGuard] },
   { path: "cita/actualizar/:id_cita", component:ActualizarCitaComponent},
   { path: 'cita/agregar', component:AgregarCitaComponent },
-  { path: "cita/mostrar", component:MostrarCitaComponent },
-  { path: "catalogos", component: ListarCatalogoComponent },
+  { path: "cita", component:MostrarCitaComponent, canActivate: [AuthguardGuard] },
+  { path: "catalogos", component: ListarCatalogoComponent, canActivate: [AuthguardGuard] },
   { path: "catalogo/agregar", component: AgregarCatalogoComponent },
   { path: "catalogo/editar/:id_catalogo", component: EditarCatalogoComponent },
   { path: "acerca-de", component: AcercaDeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'home', component: HomeComponent },
   { path: 'registracion', component: RegistroComponent },
-  { path: 'dashboard', component: DashboardComponent, /*canActivate: [AuthguardGuard] */},
+  { path: 'dashboard', component: DashboardComponent, canActivate: [AuthguardGuard] },
   { path: "", redirectTo: "home", pathMatch: "full" },// Cuando es la raíz
   { path: "**", redirectTo: "home" }
 ];
