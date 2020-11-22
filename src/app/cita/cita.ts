@@ -10,8 +10,6 @@ export class Cita {
         public hora_cita?: Time,
         public id_cita?: number
 
-        
-
     ) { }
 }
 

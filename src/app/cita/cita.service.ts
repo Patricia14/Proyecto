@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Cita } from "./cita"
 import { map } from 'rxjs/operators';
 import { environment } from "../../environments/environment"
+
 @Injectable({
   providedIn: 'root'
 })
@@ -38,7 +39,13 @@ export class CitaService {
   updateCita(cita: Cita) {
     return this.http.put(`${this.baseUrl}/cita/updatecita.php`, cita);
   }
-  obternerCita(){
-    return this.http.get(`${this.baseUrl}/cita/cmbMascota.php`);
+  llenarCmb(id_usuario: string | number){
+    //return this.http.get(`${this.baseUrl}/cita/cmbMascota.php?idUsuario=${id_usuario}`);
+    return this.http.post<any>(this.baseUrl + '/cita/cmbMascota.php', { id_usuario })
+  }
+
+  llenarCmb2(){
+    //return this.http.get(`${this.baseUrl}/cita/cmbMascota.php?idUsuario=${id_usuario}`);
+    return this.http.get(`${this.baseUrl}/cita/cmbMasAdmin.php`)
   }
 }

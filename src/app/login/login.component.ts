@@ -79,6 +79,7 @@ export class LoginComponent implements OnInit {
   
   logout() {
     this.dataService.deleteToken();
+    this.dataService.deleteTokenIdUser();
     window.location.href = window.location.href;
   }
 

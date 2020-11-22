@@ -4,7 +4,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { CitaService } from '../cita.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { first } from 'rxjs/operators';
-//import { time } from 'console';
+import { RegistroService } from '../../services/registro.service';
+import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
 @Component({
   selector: 'app-actualizar-cita',
@@ -20,10 +21,14 @@ export class ActualizarCitaComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
     private router: Router, private citaService: CitaService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private dataService: RegistroService,
+    private permissionsService: NgxPermissionsService, 
+    private rolesService: NgxRolesService) { }
 
   ngOnInit() {
     this.cmbMascota();
+    this.permissionsService.loadPermissions([this.dataService.getTokenIdUser()]);
     
     let idCita = this.route.snapshot.paramMap.get("id_cita");
     this.citaService.getCita(idCita).subscribe((cita: Cita) => this.cita = cita)
@@ -52,7 +57,7 @@ citaModel = new Cita("",0)
   }
   cmbMascota() {
     return this.citaService
-      .obternerCita()
+      .llenarCmb(this.dataService.getTokenIdUser())
       .subscribe(cita => {
         this.unidadesCita = cita;
       });

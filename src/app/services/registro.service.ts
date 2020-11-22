@@ -29,7 +29,10 @@ export class RegistroService {
     return this.httpClient.post<any>(this.baseUrl + '/login.php', { username, password })
       .pipe(map(Registro => {
         this.setToken(Registro[0].tipo_usuario);
+        this.setTokenIdUser(Registro[0].id_usuario);
         this.getLoggedInName.emit(true);
+        console.log(this.getTokenIdUser());
+        console.log(this.getToken());
         this.permissionsService.loadPermissions([this.getToken()]);
         return Registro;
       }));
@@ -45,12 +48,25 @@ export class RegistroService {
     localStorage.setItem('token', token);
   }
 
+  //token2
+  setTokenIdUser(token: string){
+    localStorage.setItem('token2', token)
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }
 
+  getTokenIdUser() {
+    return localStorage.getItem('token2');
+  }
+
   deleteToken() {
     localStorage.removeItem('token');
+  }
+
+  deleteTokenIdUser() {
+    localStorage.removeItem('token2');
   }
 
   isLoggedIn() {
