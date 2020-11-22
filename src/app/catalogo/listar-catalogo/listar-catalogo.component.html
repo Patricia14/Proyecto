@@ -8,9 +8,9 @@
         <th mat-header-cell *matHeaderCellDef>Precio</th>
         <td mat-cell *matCellDef="let catalogo"> {{catalogo.precio_catalogo}} </td>
     </ng-container>
-    <ng-container matColumnDef="imagen">
-        <th mat-header-cell *matHeaderCellDef>imagen</th>
-        <td mat-cell *matCellDef="let catalogo"> {{catalogo.imagen_catalogo}} </td>
+    <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef>codigo</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.codigo_catalogo}} </td>
     </ng-container>
     <ng-container matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef>descripcion</th>
@@ -33,8 +33,8 @@
         </td>
     </ng-container>
 
-    <tr mat-header-row *matHeaderRowDef="['nombre', 'precio', 'imagen', 'descripcion','editar', 'eliminar']"></tr>
-    <tr mat-row *matRowDef="let fila; columns: ['nombre', 'precio', 'imagen', 'descripcion','editar', 'eliminar'];"></tr>
+    <tr mat-header-row *matHeaderRowDef="['nombre', 'precio', 'codigo', 'descripcion','editar', 'eliminar']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['nombre', 'precio', 'codigo', 'descripcion','editar', 'eliminar'];"></tr>
 </table>
 
 <table mat-table [dataSource]="catalogo" class="mat-elevation-z8" style="width: 100%;" *ngxPermissionsOnly="['1', '2']">
@@ -46,14 +46,14 @@
         <th mat-header-cell *matHeaderCellDef>Precio</th>
         <td mat-cell *matCellDef="let catalogo"> {{catalogo.precio_catalogo}} </td>
     </ng-container>
-    <ng-container matColumnDef="imagen">
-        <th mat-header-cell *matHeaderCellDef>imagen</th>
-        <td mat-cell *matCellDef="let catalogo"> {{catalogo.imagen_catalogo}} </td>
+    <ng-container matColumnDef="codigo">
+        <th mat-header-cell *matHeaderCellDef>codigo</th>
+        <td mat-cell *matCellDef="let catalogo"> {{catalogo.codigo_catalogo}} </td>
     </ng-container>
     <ng-container matColumnDef="descripcion">
         <th mat-header-cell *matHeaderCellDef>descripcion</th>
         <td mat-cell *matCellDef="let catalogo"> {{catalogo.descripcion_catalogo}} </td>
     </ng-container>
-    <tr mat-header-row *matHeaderRowDef="['nombre', 'precio', 'imagen', 'descripcion']"></tr>
-    <tr mat-row *matRowDef="let fila; columns: ['nombre', 'precio', 'imagen', 'descripcion'];"></tr>
+    <tr mat-header-row *matHeaderRowDef="['nombre', 'precio', 'codigo', 'descripcion']"></tr>
+    <tr mat-row *matRowDef="let fila; columns: ['nombre', 'precio', 'codigo', 'descripcion'];"></tr>
 </table> 

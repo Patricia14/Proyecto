@@ -6,7 +6,7 @@ if (empty($_GET["idMascota"])) {
 }
 $idMascota = $_GET["idMascota"];
 $bd = include_once "bd.php";
-$sentencia = $bd->prepare("select id_mascota, nombre_mascota, edad_mascota, raza_mascota from mascota where id_mascota = ?");
+$sentencia = $bd->prepare("select id_mascota, nombre_mascota, edad_mascota, raza_mascota, id_cliente from mascota where id_mascota = ?");
 $sentencia->execute([$idMascota]);
 $mascota = $sentencia->fetchObject();
 echo json_encode($mascota);

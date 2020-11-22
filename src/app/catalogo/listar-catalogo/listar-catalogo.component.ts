@@ -14,7 +14,7 @@ import { RegistroService } from '../../services/registro.service';
 })
 export class ListarCatalogoComponent implements OnInit {
   public catalogo: Catalogo[] = [
-    new Catalogo("comedero para gatos", 5.00,"imagen","Comedero para gatos de color rojo")
+    new Catalogo("comedero para gatos", 5.00,"codigo","Comedero para gatos de color rojo")
   ];
 
   constructor(private catalogoService: CatalogoService, private dialogo: MatDialog, private snackBar: MatSnackBar,

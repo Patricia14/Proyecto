@@ -12,6 +12,6 @@ if (!$jsonMascota) {
     exit('No hay datos');
 }
 $bd = include_once 'bd.php';
-$sentencia = $bd->prepare('UPDATE mascota SET nombre_mascota = ?, edad_mascota = ?, raza_mascota = ? WHERE id_mascota = ?');
-$resultado = $sentencia->execute([$jsonMascota->nombre_mascota, $jsonMascota->edad_mascota, $jsonMascota->raza_mascota, $jsonMascota->id_mascota]);
+$sentencia = $bd->prepare('UPDATE mascota SET nombre_mascota = ?, edad_mascota = ?, raza_mascota = ?, id_cliente=? WHERE id_mascota = ?');
+$resultado = $sentencia->execute([$jsonMascota->nombre_mascota, $jsonMascota->edad_mascota, $jsonMascota->raza_mascota,$jsonMascota->id_cliente, $jsonMascota->id_mascota]);
 echo json_encode($resultado);

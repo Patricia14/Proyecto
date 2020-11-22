@@ -1,4 +1,3 @@
-
 <?php
 header("Access-Control-Allow-Origin: http://localhost:4200");
 header("Access-Control-Allow-Headers: *");
@@ -7,8 +6,8 @@ if (!$jsonMascota) {
     exit("No hay datos");
 }
 $bd = include_once "bd.php";
-$sentencia = $bd->prepare("insert into mascota(nombre_mascota, edad_mascota, raza_mascota) values (?,?,?)");
-$resultado = $sentencia->execute([$jsonMascota->nombre_mascota, $jsonMascota->edad_mascota, $jsonMascota->raza_mascota]);
+$sentencia = $bd->prepare("insert into mascota(nombre_mascota, edad_mascota, raza_mascota, id_cliente) values (?,?,?,?)");
+$resultado = $sentencia->execute([$jsonMascota->nombre_mascota, $jsonMascota->edad_mascota, $jsonMascota->raza_mascota, $jsonMascota->id_usuario]);
 echo json_encode([
     "resultado" => $resultado,
 ]);

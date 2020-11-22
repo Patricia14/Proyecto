@@ -21,7 +21,17 @@
                 placeholder="Raza">
         </mat-form-field>
     </p>
-    
+    <p>
+
+        <label>Selecciona Dueño</label>
+        <select class="form-control" [(ngModel)]="mascota.id_cliente" name="opcionSeleccionado">
+            <option disabled value="Selecciona">Selecciona</option>
+            <option *ngFor="let u of unidadesUsuario" value="{{u.id_usuario}}">
+                {{u.id_usuario}} - {{u.nombre_usuario}}
+
+            </option>
+        </select>
+    </p>
     <p>
         <button type="submit" mat-flat-button color="accent">Guardar</button>
         &nbsp;
