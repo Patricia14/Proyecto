@@ -30,9 +30,8 @@ export class RegistroService {
       .pipe(map(Registro => {
         this.setToken(Registro[0].tipo_usuario);
         this.setTokenIdUser(Registro[0].id_usuario);
+        this.setTokenName(Registro[0].nombre_usuario);
         this.getLoggedInName.emit(true);
-        console.log(this.getTokenIdUser());
-        console.log(this.getToken());
         this.permissionsService.loadPermissions([this.getToken()]);
         return Registro;
       }));
@@ -53,6 +52,10 @@ export class RegistroService {
     localStorage.setItem('token2', token)
   }
 
+  setTokenName(token: string){
+    localStorage.setItem('token3', token)
+  }
+
   getToken() {
     return localStorage.getItem('token');
   }
@@ -61,12 +64,20 @@ export class RegistroService {
     return localStorage.getItem('token2');
   }
 
+  getTokenName() {
+    return localStorage.getItem('token3');
+  }
+
   deleteToken() {
     localStorage.removeItem('token');
   }
 
   deleteTokenIdUser() {
     localStorage.removeItem('token2');
+  }
+
+  deleteTokenName() {
+    localStorage.removeItem('token3');
   }
 
   isLoggedIn() {

@@ -10,7 +10,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class EditarMascotaComponent implements OnInit {
 
-  public mascota: Mascota = new Mascota("", 0, "");
+  public mascota: Mascota = new Mascota("", 0, "", 0);
 
   constructor(private route: ActivatedRoute,
     private router: Router, private mascotasService: MascotasService,

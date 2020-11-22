@@ -13,6 +13,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./agregar-mascota.component.css']
 })
 export class AgregarMascotaComponent implements OnInit {
+
   opcionSeleccionadoCliente;
   unidadesUsuario;
   seleccion;
@@ -20,7 +21,7 @@ export class AgregarMascotaComponent implements OnInit {
   constructor(private mascotasService: MascotasService,
     private snackBar: MatSnackBar,
     private router: Router,
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.cmbUsuario();

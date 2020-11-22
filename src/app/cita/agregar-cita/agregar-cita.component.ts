@@ -16,6 +16,8 @@ import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 })
 
 export class AgregarCitaComponent implements OnInit {
+  minDate: Date;
+  maxDate: Date;
   opcionSeleccionadoCita;
   unidadesCita;
   unidadesCita2;
@@ -31,13 +33,17 @@ export class AgregarCitaComponent implements OnInit {
     private permissionsService: NgxPermissionsService,
     private rolesService: NgxRolesService
   ) {
+    const currentDay = new Date().getFullYear();
+
+    this.minDate = new Date(currentDay - 0, 10, 22);
+    this.maxDate = new Date(currentDay + 1, 11, 31);
   }
 
   ngOnInit() {
+    console.log(this.minDate)
     this.cmbMascota();
     this.cmbMascota2();
     this.permissionsService.loadPermissions([this.dataService.getToken()]);
-    //this.permissionsService.loadPermissions([this.dataService.getTokenIdUser()]);
   }
   citaModel = new Cita("", 0)
 
@@ -45,7 +51,7 @@ export class AgregarCitaComponent implements OnInit {
   onSubmit() {
     console.log(this.dataService.getToken())
     this.citaModel.id_cliente = this.seleccion;
-    if(this.citaModel.id_cliente != null){
+    if (this.citaModel.id_cliente != null) {
       this.citaService.addCita(this.citaModel).pipe(first()).subscribe(() => {
         this.snackBar.open('Cita guardada', undefined, {
           duration: 3000,
@@ -58,7 +64,7 @@ export class AgregarCitaComponent implements OnInit {
             duration: 3000,
           })
         })
-    }else{
+    } else {
       this.citaModel.id_cliente = 0;
       this.citaService.addCita(this.citaModel).pipe(first()).subscribe(() => {
         this.snackBar.open('Cita guardada', undefined, {

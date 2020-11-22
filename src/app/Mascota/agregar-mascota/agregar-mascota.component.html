@@ -1,36 +1,32 @@
-<h2>Agregar mascota <mat-icon>pets</mat-icon></h2>
+<h2>Agregar mascota <mat-icon>pets</mat-icon>
+</h2>
 <form (ngSubmit)="onSubmit()" #formMascota="ngForm">
     <p>
 
         <mat-form-field>
-            <input matInput name="nombre" [(ngModel)]="mascotaModel.nombre_mascota"
-                type="text"
-                placeholder="Nombre">
+            <input matInput name="name" [(ngModel)]="mascotaModel.nombre_mascota" type="text" placeholder="Nombre">
         </mat-form-field>
     </p>
-    
+
     <p>
         <mat-form-field>
-            <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota"
-                type="number"
-                placeholder="Edad">
+            <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota" type="number" placeholder="Edad">
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
-            <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota"
-                type="text"
-                placeholder="Raza">
+            <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota" type="text" placeholder="Raza">
         </mat-form-field>
     </p>
     <p>
-        
+
         <label>Selecciona Dueño</label>
-        <select class="form-control" [(ngModel)]="opcionSeleccionadoUsuario" name="opcionSeleccionadoUsuario" (change)="prueba($event)"> 
+        <select class="form-control" [(ngModel)]="opcionSeleccionadoUsuario" name="opcionSeleccionadoUsuario"
+            (change)="prueba($event)">
             <option disabled value="Selecciona">Selecciona</option>
             <option *ngFor="let u of unidadesUsuario" value="{{u.id_usuario}}">
                 {{u.id_usuario}} - {{u.nombre_usuario}}
-                
+
             </option>
         </select>
     </p>

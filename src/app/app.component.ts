@@ -19,6 +19,7 @@ export class AppComponent {
   logoutbtn: boolean;
   user: SocialUser;
   loggedIn: boolean;
+  tokenName: string;
 
   constructor(private dataService: RegistroService, private authService: SocialAuthService, private router: Router,
     private permissionsService: NgxPermissionsService, private rolesService: NgxRolesService) {
@@ -35,7 +36,7 @@ export class AppComponent {
   }
 
   ngOnInit() {
-    console.log(this.dataService.getToken())
+    this.tokenName = this.dataService.getTokenName();
     this.permissionsService.loadPermissions([this.dataService.getToken()]);
     this.authService.authState.subscribe((user) => {
       this.user = user;

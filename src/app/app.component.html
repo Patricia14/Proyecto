@@ -39,7 +39,7 @@
         Veterinaria pets
       </span>
       <mat-toolbar-row class="flexExpand">
-        <nav class="navbar-expand-lg navbar-dark bg-warn rounded ">
+        <nav class="navbar-expand-lg navbar-dark bg-warn rounded" id="mainNav">
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample"
             aria-controls="navbarsExample" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -52,15 +52,12 @@
               <li class="nav-item">
                 <a class="nav-link" *ngIf="loginbtn" routerLink="login" routerLinkActive="active">Login</a>
               </li>
-              <li *ngxPermissionsOnly="['1']" class="nav-item"><a class="nav-link"
-                  *ngIf="logoutbtn" (click)="logout()">Logout</a>
-              </li>
               <li class="nav-item">
                 <a class="nav-link" *ngIf="loginbtn" routerLink="registracion" routerLinkActive="active">Registrase</a>
               </li>
-              <li *ngxPermissionsOnly="['1']" class="nav-item">
-                <a class="nav-link" *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Dashboard</a>
-              </li>
+              <li class="nav-item"><a class="nav-link"
+                *ngIf="logoutbtn" routerLink="dashboard" routerLinkActive="active">Bienvenido {{tokenName}}</a>
+            </li>
             </ul>
           </div>
         </nav>

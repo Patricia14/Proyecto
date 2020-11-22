@@ -54,6 +54,8 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.dataService.deleteToken();
+          this.dataService.deleteTokenIdUser();
+          this.dataService.deleteTokenName();
           this.angForm.setValue({email: this.user.email, password: ''});
           this.loginbtn = true;
           this.logoutbtn = false;
@@ -80,6 +82,7 @@ export class LoginComponent implements OnInit {
   logout() {
     this.dataService.deleteToken();
     this.dataService.deleteTokenIdUser();
+    this.dataService.deleteTokenName();
     window.location.href = window.location.href;
   }
 

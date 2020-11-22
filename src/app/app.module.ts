@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { MatInputModule } from '@angular/material';
+import { MatDatepicker, MatDatepickerModule, MatInputModule, MatNativeDateModule} from '@angular/material';
 import { ListarMascotasComponent } from './Mascota/listar-mascotas/listar-mascotas.component';
 import { MatTableModule } from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
@@ -89,6 +89,8 @@ import { NgxPermissionsModule } from 'ngx-permissions'
     MatDialogModule,
     MatSnackBarModule,
     ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     SocialLoginModule,
     NgxPermissionsModule.forRoot()
   ],
