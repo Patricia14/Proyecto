@@ -4,7 +4,7 @@
     <form (ngSubmit)="onSubmit()" #formCita="ngForm" *ngxPermissionsOnly="['2']">
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Registre la fecha</mat-label>
-            <input matInput name="fecha"  [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+            <input matInput name="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
                 [(ngModel)]="citaModel.fecha_cita">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
@@ -44,10 +44,10 @@
 <form (ngSubmit)="onSubmit()" #formCita2="ngForm" *ngxPermissionsOnly="['0','1']">
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Registre la fecha</mat-label>
-        <input matInput name="fecha"  [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+        <input matInput name="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
             [(ngModel)]="citaModel.fecha_cita">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>   
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <p>
