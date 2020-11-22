@@ -28,11 +28,17 @@ export class MostrarCitaComponent implements OnInit {
         if (!confirmado) return;
         this.citaService
           .deleteCita(cita)
-          .subscribe(() => {
-            this.obtenerCita();
-            this.snackBar.open('Cita eliminada', undefined, {
-              duration: 1500,
-            });
+          .subscribe((confirmar: Boolean) => {
+            if(confirmar != false){
+              this.obtenerCita();
+              this.snackBar.open('Cita eliminada', undefined, {
+                duration: 3000,
+              });
+            }else{
+              this.snackBar.open('Existe un expediente con este ID', undefined, {
+                duration: 3000,
+              });
+            }
           });
       })
   }

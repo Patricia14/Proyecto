@@ -43,7 +43,7 @@ export class AgregarExpedienteComponent implements OnInit {
       this.snackBar.open('Expediente Registrato', undefined, {
         duration: 1500,
       });
-      this.router.navigate(['/expediente/mostrar']);
+      this.router.navigate(['/expediente']);
     })
   }
 

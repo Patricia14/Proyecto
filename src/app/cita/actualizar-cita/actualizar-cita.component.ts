@@ -30,7 +30,7 @@ export class ActualizarCitaComponent implements OnInit {
     console.log(idCita)
   }
   volver() {
-  this.router.navigate(['/cita/mostrar']);
+  this.router.navigate(['/cita']);
    console.log(this.cita);
   }
 citaModel = new Cita("",0)

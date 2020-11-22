@@ -27,7 +27,7 @@ export class ActualizarExpedienteComponent implements OnInit {
     this.expedienteService.getExpediente(idExpediente).subscribe((expediente: Expediente) => this.expediente = expediente)
   }
   volver() {
-   this.router.navigate(['/expediente/mostrar']);
+   this.router.navigate(['/expediente']);
    console.log(this.expediente);
   }
   expedientesModel = new Expediente(0, "")

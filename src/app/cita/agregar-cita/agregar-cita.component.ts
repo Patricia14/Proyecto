@@ -38,9 +38,9 @@ export class AgregarCitaComponent implements OnInit {
     this.citaModel.id_cliente = this.seleccion;
     this.citaService.addCita(this.citaModel).pipe(first()).subscribe(() => {
       this.snackBar.open('Cita guardada', undefined, {
-        duration: 1500,
+        duration: 3000,
       },);
-      this.router.navigate(['/cita/mostrar']);
+      this.router.navigate(['/cita']);
     },
     error => {
       alert("Fecha y hora reservadas, por favor ingrese una fecha o una hora diferente.")
