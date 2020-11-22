@@ -4,6 +4,7 @@ export class Mascota {
         public edad_mascota: number,
         public raza_mascota: string,
         public id_mascota?: number,
+        
     ) { }
 
 }

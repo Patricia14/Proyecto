@@ -30,4 +30,7 @@ export class MascotasService {
   updateMascota(mascota: Mascota) {
     return this.http.put(`${this.baseUrl}/update.php`, mascota);
   }
+  obternerUsuario(){
+    return this.http.get(`${this.baseUrl}/cmbUsuario.php`);
+  }
 }
