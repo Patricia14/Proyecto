@@ -12,7 +12,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ListarMascotasComponent implements OnInit {
   public mascotas: Mascota[] = [
-    new Mascota("Maggie", 20,"Chihuahua")
+    new Mascota("Maggie", 20,"Chihuahua", 20)
   ];
 
   constructor(private mascotasService: MascotasService, private dialogo: MatDialog, private snackBar: MatSnackBar) { }
