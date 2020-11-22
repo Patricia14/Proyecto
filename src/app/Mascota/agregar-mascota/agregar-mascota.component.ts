@@ -26,10 +26,10 @@ export class AgregarMascotaComponent implements OnInit {
     this.cmbUsuario();
     this.opcionSeleccionadoCliente = "Selecciona";
   }
-  mascotaModel = new Mascota("", undefined, "" )
+  mascotaModel = new Mascota("", undefined, "", undefined )
 
   onSubmit() {
-    this.mascotaModel.id_mascota = this.seleccion;
+    this.mascotaModel.id_usuario = this.seleccion;
     this.mascotasService.addMascota(this.mascotaModel).subscribe(() => {
       this.snackBar.open('Mascota guardada', undefined, {
         duration: 1500,

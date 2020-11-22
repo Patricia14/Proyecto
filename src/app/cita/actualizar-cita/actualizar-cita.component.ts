@@ -28,7 +28,7 @@ export class ActualizarCitaComponent implements OnInit {
 
   ngOnInit() {
     this.cmbMascota();
-    this.permissionsService.loadPermissions([this.dataService.getTokenIdUser()]);
+    this.permissionsService.loadPermissions([this.dataService.getToken()]);
     
     let idCita = this.route.snapshot.paramMap.get("id_cita");
     this.citaService.getCita(idCita).subscribe((cita: Cita) => this.cita = cita)
@@ -40,7 +40,6 @@ export class ActualizarCitaComponent implements OnInit {
   }
 citaModel = new Cita("",0)
   onSubmit() {
-    //this.cita.id_cliente = this.unidadesCita.indexOf(this.cita.id_cliente);
     this.citaModel.id_cita = this.seleccion;
     this.citaService.updateCita(this.cita).pipe(first()).subscribe(() => {
       this.snackBar.open('Cita actualizado', undefined, {
@@ -57,7 +56,7 @@ citaModel = new Cita("",0)
   }
   cmbMascota() {
     return this.citaService
-      .llenarCmb(this.dataService.getTokenIdUser())
+      .llenarCmb2()
       .subscribe(cita => {
         this.unidadesCita = cita;
       });
