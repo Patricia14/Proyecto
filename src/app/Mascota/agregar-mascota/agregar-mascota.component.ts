@@ -59,13 +59,19 @@ export class AgregarMascotaComponent implements OnInit {
     this.loginbtn = !name;
   }
   onSubmit() {
-      this.mascotaModel.id_usuario = this.seleccion;
-      this.mascotasService.addMascota(this.mascotaModel).subscribe(() => {
-        this.snackBar.open('Mascota guardada', undefined, {
-          duration: 1500,
-        });
-        this.router.navigate(['/mascotas']);
-      })
+    this.mascotaModel.id_usuario = this.seleccion;
+    this.mascotasService.addMascota(this.mascotaModel).subscribe(() => {
+      this.snackBar.open('Mascota guardada', undefined, {
+        duration: 1500,
+      });
+      this.router.navigate(['/mascotas']);
+    },
+    error => {
+      //alert("Seleccione un Dueño")
+      this.snackBar.open('Seleccione un Dueño', undefined, {
+        duration: 3000,
+      } )
+    })
   }
 
   cmbUsuario() {
