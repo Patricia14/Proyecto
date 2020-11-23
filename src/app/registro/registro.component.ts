@@ -6,6 +6,7 @@ import { RegistroService } from '../services/registro.service';
 import { SocialAuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
 import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-registro',
@@ -21,7 +22,9 @@ export class RegistroComponent implements OnInit {
   prueba: string;
   loggedIn: boolean;
 
-  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router, private authService: SocialAuthService) {
+  constructor(private fb: FormBuilder, private dataService: RegistroService, private router: Router, 
+    private authService: SocialAuthService,
+    private snackBar: MatSnackBar,) {
     this.angForm = this.fb.group({
       email: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
       password: ['', Validators.required],
@@ -63,6 +66,9 @@ export class RegistroComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
+          this.snackBar.open('Registro Completo', undefined, {
+            duration: 3000,
+          });
           this.router.navigate(['login']);
         },
         error => {

@@ -5,9 +5,11 @@
 
         <mat-form-field>
             <div class="form-group">
-                <input matInput  name="nombre"  [(ngModel)]="mascotaModel.nombre_mascota" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
-                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger" >
-    
+                <input matInput name="nombre" [(ngModel)]="mascotaModel.nombre_mascota" type="text"
+                    formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre"
+                    required="true">
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+
                     <div *ngIf="nombre.errors.required">
                         Nombre del mascota es requerido.
                     </div>
@@ -17,29 +19,33 @@
                     <div *ngIf="nombre.errors.pattern">
                         Solo letras
                     </div>
-                </div></div>
+                </div>
+            </div>
         </mat-form-field>
     </p>
 
     <p>
         <mat-form-field>
             <div class="form-group">
-                <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota"  type="number" formControlName="edad" autocomplete="off" class="form-control input-sm" placeholder="Edad" required="true" min="0" >
+                <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota" type="number" formControlName="edad"
+                    autocomplete="off" class="form-control input-sm" placeholder="Edad" required="true" min="0">
                 <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
-    
+
                     <div *ngIf="edad.errors.required">
                         Edad de la mascota es requerida.
                     </div>
-                    
-                </div></div>
+
+                </div>
+            </div>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
             <div class="form-group">
-                <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota" type="text" formControlName="raza" autocomplete="off" class="form-control input-sm" placeholder="Raza" required="true">
+                <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota" type="text" formControlName="raza"
+                    autocomplete="off" class="form-control input-sm" placeholder="Raza" required="true">
                 <div *ngIf="raza.invalid && (raza.dirty || raza.touched)" class="alert alert-danger">
-    
+
                     <div *ngIf="raza.errors.required">
                         Raza de mascota es requerido.
                     </div>
@@ -49,7 +55,8 @@
                     <div *ngIf="raza.errors.pattern">
                         Solo letras
                     </div>
-                </div></div>
+                </div>
+            </div>
         </mat-form-field>
     </p>
     <p>
