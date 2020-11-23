@@ -2,12 +2,13 @@
 </h2>
 <form [formGroup]="angForm" (ngSubmit)="onSubmit()" #formUsuario="ngForm">
     <p>
-
         <mat-form-field>
             <div class="form-group">
-                <input matInput name="nombre" [(ngModel)]="usuarioModel.nombre_usuario" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
+                <input matInput name="nombre" [(ngModel)]="usuarioModel.nombre_usuario" type="text"
+                    formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre"
+                    required="true">
                 <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
-    
+
                     <div *ngIf="nombre.errors.required">
                         Nombre del cliente es requerido.
                     </div>
@@ -17,55 +18,63 @@
                     <div *ngIf="nombre.errors.pattern">
                         Solo letras
                     </div>
-                </div></div>
+                </div>
+            </div>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
             <div class="form-group">
-                <input matInput type="text" [(ngModel)]="usuarioModel.apellido_usuario" name="apellido" formControlName="apellido" autocomplete="off" class="form-control input-sm" placeholder="Apellido" required="true">
-            <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
-    
-                <div *ngIf="apellido.errors.required">
-                    Apellido del cliente es requerido.
-                </div>
-                <div *ngIf="apellido.errors.minlength">
-                    Minimo 3 letras
-                </div>
-                <div *ngIf="apellido.errors.pattern">
-                    Solo letras
-                </div>
-            </div></div>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field>
-            <div class="form-group">
-                <input matInput type="email" name="email"  [(ngModel)]="usuarioModel.correo_usuario" id="email" placeholder="Correo electronico" formControlName="email" autocomplete="off" class="form-control input-sm" placeholder="Email" required="true">
-                            <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
-    
-                                <div *ngIf="email.errors.required">
-                                    Email es requerido.
-                                </div>
-                                <div *ngIf="email.errors.minlength">
-                                    Minimo 3 letras
-                                </div>
-                                <div *ngIf="email.errors.pattern">
-                                    formato de email invalido
-                                </div>
-                            </div>
-                        </div>
-        </mat-form-field>
-    </p>
-    <p>
-        <mat-form-field>
-            <input matInput type="password" [(ngModel)]="usuarioModel.password_usuario" name="password" placeholder="Contraseña" formControlName="password" autocomplete="off" class="form-control input-sm" placeholder="Password" required="true">
-                        <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+                <input matInput type="text" [(ngModel)]="usuarioModel.apellido_usuario" name="apellido"
+                    formControlName="apellido" autocomplete="off" class="form-control input-sm" placeholder="Apellido"
+                    required="true">
+                <div *ngIf="apellido.invalid && (apellido.dirty || apellido.touched)" class="alert alert-danger">
 
-                            <div *ngIf="password.errors.required">
-                                El password es requerido.
-                            </div>
-                        </div>
+                    <div *ngIf="apellido.errors.required">
+                        Apellido del cliente es requerido.
+                    </div>
+                    <div *ngIf="apellido.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="apellido.errors.pattern">
+                        Solo letras
+                    </div>
+                </div>
+            </div>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <div class="form-group">
+                <input matInput type="email" name="email" [(ngModel)]="usuarioModel.correo_usuario" id="email"
+                    placeholder="Correo electronico" formControlName="email" autocomplete="off"
+                    class="form-control input-sm" placeholder="Email" required="true">
+                <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+
+                    <div *ngIf="email.errors.required">
+                        Email es requerido.
+                    </div>
+                    <div *ngIf="email.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="email.errors.pattern">
+                        formato de email invalido
+                    </div>
+                </div>
+            </div>
+        </mat-form-field>
+    </p>
+    <p>
+        <mat-form-field>
+            <input matInput type="password" [(ngModel)]="usuarioModel.password_usuario" name="password"
+                placeholder="Contraseña" formControlName="password" autocomplete="off" class="form-control input-sm"
+                placeholder="Password" required="true">
+            <div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+
+                <div *ngIf="password.errors.required">
+                    El password es requerido.
+                </div>
+            </div>
         </mat-form-field>
     </p>
     <p>

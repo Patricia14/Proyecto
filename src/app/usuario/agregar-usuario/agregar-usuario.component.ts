@@ -26,23 +26,25 @@ export class AgregarUsuarioComponent implements OnInit {
     private usuarioService: UsuarioService,
     private snackBar: MatSnackBar,
     private router: Router,
-  ) {  this.angForm = this.fb.group({
-    email: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
+  ) {
+    this.angForm = this.fb.group({
+      email: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
       password: ['', Validators.required],
       nombre: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')])],
       apellido: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')])]
-  });
+    });
 
-  dataService.getLoggedInName.subscribe(nombre => this.changeName(nombre));
-  if (this.dataService.isLoggedIn()) {
-    console.log("loggedin");
-    this.loginbtn = false;
-    this.logoutbtn = true
+    dataService.getLoggedInName.subscribe(nombre => this.changeName(nombre));
+    if (this.dataService.isLoggedIn()) {
+      console.log("loggedin");
+      this.loginbtn = false;
+      this.logoutbtn = true
+    }
+    else {
+      this.loginbtn = true;
+      this.logoutbtn = false
+    }
   }
-  else {
-    this.loginbtn = true;
-    this.logoutbtn = false
-  }}
 
   usuarioModel = new Usuario("", "", "", "", "")
 
@@ -89,14 +91,14 @@ export class AgregarUsuarioComponent implements OnInit {
   get password() { return this.angForm.get('password'); }
   get apellido() { return this.angForm.get('apellido') }
 
-volver(){
+  volver() {
 
-  console.log(this.seleccion);
-}
+    console.log(this.seleccion);
+  }
 
-prueba(e) {
-  this.seleccion = e.target.value;
-}
+  prueba(e) {
+    this.seleccion = e.target.value;
+  }
 
 
 }
