@@ -15,6 +15,7 @@ import { UsuarioService } from "../../services/usuario.service"
 export class AgregarMascotaComponent implements OnInit {
 
   opcionSeleccionadoCliente;
+  opcionSeleccionadoUsuario;
   unidadesUsuario;
   seleccion;
   forms: FormGroup;
@@ -69,7 +70,7 @@ export class AgregarMascotaComponent implements OnInit {
       //alert("Seleccione un Dueño")
       this.snackBar.open('Seleccione un Dueño', undefined, {
         duration: 3000,
-      })
+      } )
     })
   }
 

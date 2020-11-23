@@ -55,8 +55,7 @@
     <p>
 
         <label>Selecciona Dueño</label>
-        <select class="form-control" [(ngModel)]="opcionSeleccionadoUsuario" name="opcionSeleccionadoUsuario"
-            (change)="prueba($event)">
+        <select class="form-control" (change)="prueba($event)">
             <option disabled value="Selecciona">Selecciona</option>
             <option *ngFor="let u of unidadesUsuario" value="{{u.id_usuario}}">
                 {{u.id_usuario}} - {{u.nombre_usuario}}
