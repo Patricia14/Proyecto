@@ -18,13 +18,20 @@ export class ActualizarCitaComponent implements OnInit {
   opcionSeleccionadoCita;
   unidadesCita;
   seleccion;
+  minDate:Date;
+  maxDate:Date;
 
   constructor(private route: ActivatedRoute,
     private router: Router, private citaService: CitaService,
     private snackBar: MatSnackBar,
     private dataService: RegistroService,
     private permissionsService: NgxPermissionsService, 
-    private rolesService: NgxRolesService) { }
+    private rolesService: NgxRolesService) {
+      const currentDay = new Date().getFullYear();
+
+    this.minDate = new Date(currentDay - 0, 10, 22);
+    this.maxDate = new Date(currentDay + 1, 11, 31);
+     }
 
   ngOnInit() {
     this.cmbMascota();

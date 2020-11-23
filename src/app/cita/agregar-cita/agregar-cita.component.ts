@@ -2,12 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CitaService } from '../cita.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { Cita } from '../cita';
 import { first } from 'rxjs/operators';
-import { on } from 'process';
 import { RegistroService } from '../../services/registro.service';
+import { on } from 'process';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
+import { of } from 'rxjs';
+import { FormGroup, FormControl, FormBuilder, Validators, NgForm } from '@angular/forms';
+
 
 @Component({
   selector: 'app-agregar-cita',
@@ -23,6 +25,11 @@ export class AgregarCitaComponent implements OnInit {
   unidadesCita2;
   seleccion;
   forms: FormGroup;
+  angForm: FormGroup;
+  loginbtn: boolean;
+  logoutbtn: boolean;
+  tipo: string;
+  loggedIn: boolean;
   public cita: Cita[] = [
     new Cita("", 0)
   ];
@@ -31,12 +38,30 @@ export class AgregarCitaComponent implements OnInit {
     private router: Router,
     private dataService: RegistroService,
     private permissionsService: NgxPermissionsService,
-    private rolesService: NgxRolesService
+    private rolesService: NgxRolesService,
+    private fb: FormBuilder,
+
+  
   ) {
     const currentDay = new Date().getFullYear();
 
     this.minDate = new Date(currentDay - 0, 10, 22);
     this.maxDate = new Date(currentDay + 1, 11, 31);
+    this.angForm = this.fb.group({
+      descripcion: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')])],
+     
+   });
+   
+   dataService.getLoggedInName.subscribe(nombre => this.changeName(nombre));
+   if (this.dataService.isLoggedIn()) {
+     console.log("loggedin");
+     this.loginbtn = false;
+     this.logoutbtn = true
+   }
+   else {
+     this.loginbtn = true;
+     this.logoutbtn = false
+   } 
   }
 
   ngOnInit() {
@@ -46,7 +71,10 @@ export class AgregarCitaComponent implements OnInit {
     this.permissionsService.loadPermissions([this.dataService.getToken()]);
   }
   citaModel = new Cita("", 0)
-
+  private changeName(name: boolean): void {
+    this.logoutbtn = name;
+    this.loginbtn = !name;
+  }
 
   onSubmit() {
     console.log(this.dataService.getToken())
@@ -105,5 +133,6 @@ export class AgregarCitaComponent implements OnInit {
     console.log(this.citaModel)
     console.log(this.citaService)
   }
+  get descripcion() { return this.angForm.get('descripcion') }
 
 }

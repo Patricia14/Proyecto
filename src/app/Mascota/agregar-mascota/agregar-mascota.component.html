@@ -1,21 +1,55 @@
 <h2>Agregar mascota <mat-icon>pets</mat-icon>
 </h2>
-<form (ngSubmit)="onSubmit()" #formMascota="ngForm">
+<form [formGroup]="angForm" (ngSubmit)="onSubmit()" #formMascota="ngForm">
     <p>
 
         <mat-form-field>
-            <input matInput name="name" [(ngModel)]="mascotaModel.nombre_mascota" type="text" placeholder="Nombre">
+            <div class="form-group">
+                <input matInput name="nombre" [(ngModel)]="mascotaModel.nombre_mascota" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="nombre.errors.required">
+                        Nombre del mascota es requerido.
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="nombre.errors.pattern">
+                        Solo letras
+                    </div>
+                </div></div>
         </mat-form-field>
     </p>
 
     <p>
         <mat-form-field>
-            <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota" type="number" placeholder="Edad">
+            <div class="form-group">
+                <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota"  type="number" formControlName="edad" autocomplete="off" class="form-control input-sm" placeholder="Edad" required="true">
+                <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="edad.errors.required">
+                        Edad de la mascota es requerida.
+                    </div>
+                    
+                </div></div>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
-            <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota" type="text" placeholder="Raza">
+            <div class="form-group">
+                <input matInput name="raza" [(ngModel)]="mascotaModel.raza_mascota" type="text" formControlName="raza" autocomplete="off" class="form-control input-sm" placeholder="Raza" required="true">
+                <div *ngIf="raza.invalid && (raza.dirty || raza.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="raza.errors.required">
+                        Raza de mascota es requerido.
+                    </div>
+                    <div *ngIf="raza.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="raza.errors.pattern">
+                        Solo letras
+                    </div>
+                </div></div>
         </mat-form-field>
     </p>
     <p>
@@ -31,6 +65,6 @@
         </select>
     </p>
     <p>
-        <button type="submit" mat-flat-button color="accent">Guardar</button>
+        <button type="submit" mat-flat-button color="accent" [disabled]="!angForm.valid">Guardar</button>
     </p>
 </form>

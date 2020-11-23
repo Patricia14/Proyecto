@@ -1,16 +1,17 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Cita } from "./cita"
+import { Cita } from "./cita";
 import { map } from 'rxjs/operators';
-import { environment } from "../../environments/environment"
+import { environment } from "../../environments/environment";
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CitaService {
   baseUrl = environment.baseUrl
-
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private http: HttpClient) { }
 
   getCitas() {
@@ -47,5 +48,16 @@ export class CitaService {
   llenarCmb2(){
     //return this.http.get(`${this.baseUrl}/cita/cmbMascota.php?idUsuario=${id_usuario}`);
     return this.http.get(`${this.baseUrl}/cita/cmbMasAdmin.php`)
+  }
+  getToken() {
+    return localStorage.getItem('token');
+  }
+
+  isLoggedIn() {
+    const usertoken = this.getToken();
+    if (usertoken != null) {
+      return true
+    }
+    return false;
   }
 }

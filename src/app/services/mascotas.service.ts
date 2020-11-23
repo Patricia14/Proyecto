@@ -1,5 +1,5 @@
 
-import { Injectable } from '@angular/core';
+import { Injectable, Output, EventEmitter, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Mascota } from "../models/mascota"
 import { environment } from "../../environments/environment"
@@ -8,7 +8,7 @@ import { environment } from "../../environments/environment"
 })
 export class MascotasService {
   baseUrl = environment.baseUrl
-
+  @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   constructor(private http: HttpClient) { }
 
   getMascotas() {
@@ -32,5 +32,15 @@ export class MascotasService {
   }
   obternerUsuario(){
     return this.http.get(`${this.baseUrl}/cmbUsuario.php`);
+  }
+  isLoggedIn() {
+    const usertoken = this.getToken();
+    if (usertoken != null) {
+      return true
+    }
+    return false;
+  }
+  getToken() {
+    return localStorage.getItem('token');
   }
 }

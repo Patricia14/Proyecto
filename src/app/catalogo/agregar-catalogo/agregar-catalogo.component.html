@@ -1,29 +1,76 @@
 <h2>Agregar catalogo <mat-icon>pets</mat-icon>
 </h2>
-<form (ngSubmit)="onSubmit()" #formCatalogo="ngForm">
+<form  [formGroup]="angForm" (ngSubmit)="onSubmit()" #formCatalogo="ngForm">
     <p>
 
         <mat-form-field>
-            <input matInput name="nombre" [(ngModel)]="catalogoModel.nombre_catalogo" type="text" placeholder="Nombre">
+            <div class="form-group">
+                <input matInput name="nombre" [(ngModel)]="catalogoModel.nombre_catalogo" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="nombre.errors.required">
+                        Nombre del cliente es requerido.
+                    </div>
+                    <div *ngIf="nombre.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="nombre.errors.pattern">
+                        Solo letras
+                    </div>
+                </div></div>
         </mat-form-field>
     </p>
 
     <p>
         <mat-form-field>
-            <input matInput name="precio" [(ngModel)]="catalogoModel.precio_catalogo" type="number" placeholder="Precio">
+            
+            <div class="form-group">
+                <input matInput name="precio" [(ngModel)]="catalogoModel.precio_catalogo" type="number" formControlName="precio" autocomplete="off" class="form-control input-sm" placeholder="Precio" required="true">
+                <div *ngIf="precio.invalid && (precio.dirty || precio.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="precio.errors.required">
+                        Precio de producto requerido
+                    </div>
+                    
+                </div></div>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
-            <input matInput name="codigo" [(ngModel)]="catalogoModel.codigo_catalogo" type="text" placeholder="codigo">
+            
+            <div class="form-group">
+                <input matInput name="codigo" [(ngModel)]="catalogoModel.codigo_catalogo" type="text" formControlName="codigo" placeholder="codigo" autocomplete="off" class="form-control input-sm" placeholder="codigo" required="true">
+                <div *ngIf="codigo.invalid && (codigo.dirty || codigo.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="codigo.errors.required">
+                        Codigo es requerido.
+                    </div>
+                    <div *ngIf="codigo.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    
+                </div></div>
         </mat-form-field>
     </p>
     <p>
         <mat-form-field>
-            <input matInput name="descripcion" [(ngModel)]="catalogoModel.descripcion_catalogo" type="text" placeholder="Descripcion">
+           <div class="form-group">
+                <input matInput name="descripcion" [(ngModel)]="catalogoModel.descripcion_catalogo" type="text" formControlName="descripcion" placeholder="descripcion" autocomplete="off" class="form-control input-sm" required="true">
+                <div *ngIf="descripcion.invalid && (descripcion.dirty || descripcion.touched)" class="alert alert-danger">
+    
+                    <div *ngIf="descripcion.errors.required">
+                        Descripción es requerido.
+                    </div>
+                    <div *ngIf="descripcion.errors.minlength">
+                        Minimo 3 letras
+                    </div>
+                    <div *ngIf="descripcion.errors.pattern">
+                        Solo letras
+                    </div>
+                </div></div>
         </mat-form-field>
     </p>
     <p>
-        <button type="submit" mat-flat-button color="accent">Guardar</button>
+        <button type="submit" mat-flat-button color="accent" [disabled]="!angForm.valid">Guardar</button>
     </p>
 </form>
