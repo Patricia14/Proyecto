@@ -7,6 +7,7 @@ import { first } from 'rxjs/operators';
 import { RegistroService } from '../../services/registro.service';
 import { NgxPermissionsService, NgxRolesService } from 'ngx-permissions';
 
+
 @Component({
   selector: 'app-actualizar-cita',
   templateUrl: './actualizar-cita.component.html',
@@ -26,7 +27,7 @@ export class ActualizarCitaComponent implements OnInit {
     private snackBar: MatSnackBar,
     private dataService: RegistroService,
     private permissionsService: NgxPermissionsService, 
-    private rolesService: NgxRolesService) { 
+    private rolesService: NgxRolesService, ) { 
 
       const currentDay = new Date().getFullYear();
 
@@ -38,7 +39,7 @@ export class ActualizarCitaComponent implements OnInit {
   ngOnInit() {
     this.cmbMascota();
     this.permissionsService.loadPermissions([this.dataService.getToken()]);
-    
+
     let idCita = this.route.snapshot.paramMap.get("id_cita");
     this.citaService.getCita(idCita).subscribe((cita: Cita) => this.cita = cita)
     //console.log(idCita)

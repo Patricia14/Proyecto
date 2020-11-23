@@ -15,15 +15,18 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
    <!--<p>
-           <mat-form-field>
+           <mat-form-field> <mat-label>Registre la hora</mat-label>
                <input matInput name="hora" [(ngModel)]="cita.hora_cita" type="time" placeholder="hora" >
-           </mat-form-field>
+           </mat-form-field><input matInput name="hora" [(ngModel)]="cita.hora_cita" type="time" placeholder="hora" disabled>
        </p>-->
        <p>
-        <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Registre la hora</mat-label>
-        <input matInput [(ngModel)]="cita.hora_cita" name="hora" min="08:00 am" max="05:00 pm" step="1800" aria-label="Registre la hora" [ngxTimepicker]="fullTime" [format]="24"  readonly >
-        <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+
+        <mat-form-field class="example-full-width" appearance="fill">  
+        <input matInput [(ngModel)]="cita.hora_cita" name="hora"  min="08:00 am" max="05:00 pm"  aria-label="Actualizar la hora" [ngxTimepicker]="fullTime" [format]="24"  readonly>
+        <ngx-material-timepicker  #fullTime></ngx-material-timepicker>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill"> 
+        <input matInput name="hora1" [(ngModel)]="cita.hora_cita" type="time" placeholder="hora" disabled> 
     </mat-form-field>
     </p>
 

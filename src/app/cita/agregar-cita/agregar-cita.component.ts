@@ -45,7 +45,7 @@ export class AgregarCitaComponent implements OnInit {
   ) {
     const currentDay = new Date().getFullYear();
 
-    this.minDate = new Date(currentDay - 0, 10, 22);
+    this.minDate = new Date(currentDay - 0, 10, 23);
     this.maxDate = new Date(currentDay + 1, 11, 31);
     this.angForm = this.fb.group({
       descripcion: ['', Validators.compose([Validators.required, Validators.minLength(3), Validators.pattern('[a-zA-Z ]{2,254}')])],

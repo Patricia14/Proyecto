@@ -1,5 +1,9 @@
-<h2>Listado de Citas</h2>
-<table mat-table [dataSource]="citas" class="mat-elevation-z8" style="width: 100%;">
+<h2 *ngxPermissionsOnly="['0','1']">Listado de Citas</h2>
+
+
+<h2 *ngxPermissionsOnly="['2']">Veterinaria pets</h2>
+
+<table mat-table [dataSource]="citas" class="mat-elevation-z8" style="width: 100%;" *ngxPermissionsOnly="['0','1']">
 
     <ng-container matColumnDef="id_cita">
         <th mat-header-cell *matHeaderCellDef>ID de la cita</th>
@@ -46,3 +50,6 @@
     <tr mat-header-row *matHeaderRowDef="['id_cita','fecha_cita', 'hora_cita','descripcion_cita','id_cliente', 'editar', 'eliminar']"></tr>
     <tr mat-row *matRowDef="let fila; columns: ['id_cita','fecha_cita', 'hora_cita','descripcion_cita','id_cliente', 'editar', 'eliminar'];"></tr>
 </table>
+
+
+

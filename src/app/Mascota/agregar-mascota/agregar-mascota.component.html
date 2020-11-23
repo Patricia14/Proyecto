@@ -5,8 +5,8 @@
 
         <mat-form-field>
             <div class="form-group">
-                <input matInput name="nombre" [(ngModel)]="mascotaModel.nombre_mascota" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
-                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger">
+                <input matInput  name="nombre"  [(ngModel)]="mascotaModel.nombre_mascota" type="text" formControlName="nombre" autocomplete="off" class="form-control input-sm" placeholder="Nombre" required="true">
+                <div *ngIf="nombre.invalid && (nombre.dirty || nombre.touched)" class="alert alert-danger" >
     
                     <div *ngIf="nombre.errors.required">
                         Nombre del mascota es requerido.
@@ -24,7 +24,7 @@
     <p>
         <mat-form-field>
             <div class="form-group">
-                <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota"  type="number" formControlName="edad" autocomplete="off" class="form-control input-sm" placeholder="Edad" required="true">
+                <input matInput name="edad" [(ngModel)]="mascotaModel.edad_mascota"  type="number" formControlName="edad" autocomplete="off" class="form-control input-sm" placeholder="Edad" required="true" min="0" >
                 <div *ngIf="edad.invalid && (edad.dirty || edad.touched)" class="alert alert-danger">
     
                     <div *ngIf="edad.errors.required">

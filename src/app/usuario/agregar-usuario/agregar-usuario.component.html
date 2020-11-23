@@ -70,7 +70,7 @@
     </p>
     <p>
         <label>Seleccione el tipo de usuario</label>
-        <select class="form-control" [(ngModel)]="opcionSeleccionado" name="opcionSeleccionado">
+        <select class="form-control" [(ngModel)]="opcionSeleccionado" formControlName="opcionSeleccionado">
             <option disabled value="Selecciona">Selecciona</option>
             <option *ngFor="let u of unidades" value="{{u}}">
                 {{u}}
@@ -82,4 +82,5 @@
     <p>
         <button type="submit" mat-flat-button color="accent" [disabled]="!angForm.valid">Guardar</button>
     </p>
+    <button (click)="volver()" type="button" mat-flat-button color="primary">Volver</button>
 </form>
