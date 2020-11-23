@@ -18,8 +18,8 @@ export class AgregarUsuarioComponent implements OnInit {
   loginbtn: boolean;
   logoutbtn: boolean;
   tipo: string;
+  seleccion;
 
-  prueba: string;
   loggedIn: boolean;
   constructor(private fb: FormBuilder,
     private dataService: UsuarioService,
@@ -55,8 +55,7 @@ export class AgregarUsuarioComponent implements OnInit {
     this.loginbtn = !name;
   }
   onSubmit() {
-    console.log(this.opcionSeleccionado);
-    if (this.opcionSeleccionado === "Administrador") {
+    if (this.seleccion == "Administrador") {
       this.usuarioModel.tipo_usuario = "0";
       console.log(this.usuarioModel.tipo_usuario);
       this.usuarioService.addUsuario(this.usuarioModel).subscribe(() => {
@@ -65,7 +64,7 @@ export class AgregarUsuarioComponent implements OnInit {
         });
         this.router.navigate(['/usuarios']);
       })
-    } else if (this.opcionSeleccionado === "Veterinario") {
+    } else if (this.seleccion == "Veterinario") {
       this.usuarioModel.tipo_usuario = "1";
       console.log(this.usuarioModel.tipo_usuario);
       this.usuarioService.addUsuario(this.usuarioModel).subscribe(() => {
@@ -92,7 +91,11 @@ export class AgregarUsuarioComponent implements OnInit {
 
 volver(){
 
-  console.log(this.usuarioModel);
+  console.log(this.seleccion);
+}
+
+prueba(e) {
+  this.seleccion = e.target.value;
 }
 
 

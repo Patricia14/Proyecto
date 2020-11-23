@@ -70,7 +70,7 @@
     </p>
     <p>
         <label>Seleccione el tipo de usuario</label>
-        <select class="form-control" [(ngModel)]="opcionSeleccionado" formControlName="opcionSeleccionado">
+        <select class="form-control" (change)="prueba($event)">
             <option disabled value="Selecciona">Selecciona</option>
             <option *ngFor="let u of unidades" value="{{u}}">
                 {{u}}

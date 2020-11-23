@@ -15,6 +15,7 @@ import { UsuarioService } from "../../services/usuario.service"
 export class AgregarMascotaComponent implements OnInit {
 
   opcionSeleccionadoCliente;
+  opcionSeleccionadoUsuario;
   unidadesUsuario;
   seleccion;
   forms: FormGroup;
@@ -58,13 +59,13 @@ export class AgregarMascotaComponent implements OnInit {
     this.loginbtn = !name;
   }
   onSubmit() {
-    this.mascotaModel.id_usuario = this.seleccion;
-    this.mascotasService.addMascota(this.mascotaModel).subscribe(() => {
-      this.snackBar.open('Mascota guardada', undefined, {
-        duration: 1500,
-      });
-      this.router.navigate(['/mascotas']);
-    })
+      this.mascotaModel.id_usuario = this.seleccion;
+      this.mascotasService.addMascota(this.mascotaModel).subscribe(() => {
+        this.snackBar.open('Mascota guardada', undefined, {
+          duration: 1500,
+        });
+        this.router.navigate(['/mascotas']);
+      })
   }
 
   cmbUsuario() {
