@@ -40,7 +40,7 @@ import { MostrarCitaComponent } from './cita/mostrar-cita/mostrar-cita.component
 import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
 import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider} from 'angularx-social-login';
 import { NgxPermissionsModule } from 'ngx-permissions'
-
+import {NgxMaterialTimepickerModule} from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
@@ -92,6 +92,7 @@ import { NgxPermissionsModule } from 'ngx-permissions'
     MatDatepickerModule,
     MatNativeDateModule,
     SocialLoginModule,
+    NgxMaterialTimepickerModule,
     NgxPermissionsModule.forRoot()
   ],
   providers: [

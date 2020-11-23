@@ -10,10 +10,17 @@
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
 
-        <p>
+       <!-- <p>
             <mat-form-field class="example-full-width" appearance="fill">
                 <input matInput name="hora" [(ngModel)]="citaModel.hora_cita" type="time" placeholder="hora">
             </mat-form-field>
+        </p>-->
+        <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Registre la hora</mat-label>
+            <input matInput [(ngModel)]="citaModel.hora_cita" name="hora" min="08:00 am" max="05:00 pm" step="1800" aria-label="Registre la hora" [ngxTimepicker]="fullTime" [format]="24"  readonly >
+            <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        </mat-form-field>
         </p>
         <p>
             <mat-form-field>
@@ -42,6 +49,8 @@
 </div>
 
 <form (ngSubmit)="onSubmit()" #formCita2="ngForm" *ngxPermissionsOnly="['0','1']">
+
+<p>
     <mat-form-field class="example-full-width" appearance="fill">
         <mat-label>Registre la fecha</mat-label>
         <input matInput name="fecha" [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
@@ -49,13 +58,22 @@
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
-    <p>
-        <mat-form-field class="example-full-width" appearance="fill">
+</p>
+    
+     <!--   <mat-form-field class="example-full-width" appearance="fill">   [min]="minTime" [max]="maxTime"
             <mat-label>Registre la hora</mat-label>
             <input matInput name="hora" [(ngModel)]="citaModel.hora_cita" type="time">
+            <input placeholder="24hr format" aria-label="24hr format" [ngxTimepicker]="fullTime" [format]="24" [(ngModel)]="citaModel.hora_cita" readonly>
+            <ngx-material-timepicker #fullTime></ngx-material-timepicker>
+        </mat-form-field>-->
+        <p>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Registre la hora</mat-label>
+            <input matInput [(ngModel)]="citaModel.hora_cita" name="hora" min="08:00 am" max="05:00 pm" step="1800" aria-label="Registre la hora" [ngxTimepicker]="fullTime" [format]="24"  readonly >
+            <ngx-material-timepicker #fullTime></ngx-material-timepicker>
         </mat-form-field>
-    </p>
+        </p>
+    
     <p>
         <mat-form-field>
             <input matInput name="descripcion" [(ngModel)]="citaModel.descripcion_cita" type="text"
