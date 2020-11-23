@@ -75,7 +75,7 @@ export class AgregarUsuarioComponent implements OnInit {
         this.router.navigate(['/usuarios']);
       })
     } else {
-      this.usuarioModel.tipo_usuario = "2";
+      this.usuarioModel.tipo_usuario == "2";
       console.log(this.usuarioModel.tipo_usuario);
       this.usuarioService.addUsuario(this.usuarioModel).subscribe(() => {
         this.snackBar.open('Usuario guardado', undefined, {
