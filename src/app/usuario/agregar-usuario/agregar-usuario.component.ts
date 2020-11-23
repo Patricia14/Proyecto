@@ -56,7 +56,7 @@ export class AgregarUsuarioComponent implements OnInit {
   }
   onSubmit() {
     console.log(this.opcionSeleccionado);
-    if (this.opcionSeleccionado === "Administrador") {
+    if (this.opcionSeleccionado == "Administrador") {
       this.usuarioModel.tipo_usuario = "0";
       console.log(this.usuarioModel.tipo_usuario);
       this.usuarioService.addUsuario(this.usuarioModel).subscribe(() => {
@@ -65,7 +65,7 @@ export class AgregarUsuarioComponent implements OnInit {
         });
         this.router.navigate(['/usuarios']);
       })
-    } else if (this.opcionSeleccionado === "Veterinario") {
+    } else if (this.opcionSeleccionado == "Veterinario") {
       this.usuarioModel.tipo_usuario = "1";
       console.log(this.usuarioModel.tipo_usuario);
       this.usuarioService.addUsuario(this.usuarioModel).subscribe(() => {
